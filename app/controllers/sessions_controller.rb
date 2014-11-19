@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     user = User.omniauth(auth)
     session[:user_id] = user.id
     session[:pic] = auth.info.image
-    render :index
+    redirect_to wishlists_path
   end
 
   def destroy

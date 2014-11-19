@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20141119184431) do
 
   create_table "wishlists", force: true do |t|
     t.string   "title"
-    t.string   "type"
+    t.string   "kind"
     t.date     "date"
     t.string   "event_url"
     t.text     "description"
