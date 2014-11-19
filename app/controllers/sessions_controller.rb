@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     user = User.omniauth(auth)
     session[:user_id] = user.id
     session[:pic] = auth.info.image
-    render plain: "hello user#{session[:user_id]}"
+    render :index
   end
 
   def destroy
