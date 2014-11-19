@@ -26,7 +26,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-gem "figaro"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -44,3 +43,32 @@ gem 'twitter-bootstrap-rails', '~> 3.2.0'
 
 gem 'omniauth-facebook'
 gem "figaro"
+
+group :test, :development do
+  # rspec for rails
+  gem 'rspec-rails'
+  # make reusable model factories for your tests
+  gem 'factory_girl_rails'
+  # fill stuff in in forms and stuff
+  gem 'capybara'
+  # open a page after a test
+  gem 'launchy'
+  # will let us run tests automatically
+  gem 'guard-rspec'
+  # notifications
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
+end
+
+group :test do
+  # all sorts of great matchers for rspec
+  gem 'shoulda-matchers'
+end
+
+group :development do
+  # just awesome-looking errors
+  gem 'better_errors'
+  # let's be able to debug with pry in rails
+  gem 'pry-rails'
+  # omg. this is better than butter on sliced bread.
+  gem 'pry-byebug'
+end
