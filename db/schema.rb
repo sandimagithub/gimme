@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141119184431) do
     t.string   "name"
     t.string   "image"
     t.string   "token"
+    t.string   "email"
     t.datetime "expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -38,7 +39,7 @@ ActiveRecord::Schema.define(version: 20141119184431) do
 
   create_table "wishlists", force: true do |t|
     t.string   "title"
-    t.string   "type"
+    t.string   "kind"
     t.date     "date"
     t.string   "event_url"
     t.text     "description"

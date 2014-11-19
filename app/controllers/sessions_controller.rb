@@ -1,8 +1,10 @@
 class SessionsController < ApplicationController
   def create
-    user = User.omniauth(env['omniauth.auth'])
+  	auth = env['omniauth.auth']
+    user = User.omniauth(auth)
     session[:user_id] = user.id
-    render plain: "hello user#{session[:user_id]}"
+    session[:pic] = auth.info.image
+    redirect_to wishlists_path
   end
 
   def destroy

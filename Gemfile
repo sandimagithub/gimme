@@ -38,6 +38,9 @@ gem "figaro"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-# gem 'pry-rails'
+
+gem 'pry-rails'
+gem 'twitter-bootstrap-rails', '~> 3.2.0'
 
 gem 'omniauth-facebook'
+gem "figaro"
