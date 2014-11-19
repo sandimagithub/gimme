@@ -15,25 +15,26 @@ If they want, users can designate the date of the wishlist’s associated event.
 
 MODELS
 
-        Users
-                Facebook data
-        Wishlists
-                User id
-                Title: string
-                Type: string
-                Date: date
-                Event url: string
-                Description: text
+        User
+                [Facebook data]
+        Wishlist
+                user_id
+                title: string
+                type: string
+                date: date
+                event_url: string
+                description: text
         Items
-                Wishlist id
-                User id (giver id)
-                Title: string
-                Url: string
-                Img url: string
-                Description: text
+                wishlist_id
+                user id (giver id)
+                title: string
+                url: string
+                img_url: string
+                description: text
                 
 
 User HAS MANY items (given) HAS MANY wishlists
+
 Wishlist HAS MANY items (asked for)
 
 
