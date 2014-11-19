@@ -7,7 +7,7 @@ After logging in with Facebook, users can create multiple wishlists and add unli
 
 Any of the user’s Facebook friends can then view the wish list and “claim” items. Other visitors can see which items have been claimed and know not to gift those items.
 
-The wishlist creator will not see what has been claimed, but can delete, edit, and update items. If the user deletes a claimed item, nothing breaks!
+The wishlist creator will not see what has been claimed, but can delete, edit, and update items. This will be done on the wishlist page via ajax calls. If the user deletes a claimed item, nothing breaks!
 
 Gifters can also visit a page that shows them all of the past items they’ve gifted.
 
@@ -41,7 +41,6 @@ Wishlist HAS MANY items (asked for)
 
 Additional features, if time:
 
-- Ajax calls in “create” so that whenever a new item was added to wish list, we wouldn’t have to have a new item wish list 
 - Notify item claimers if item has been deleted
 - Share with friends
 - Additional privacy features (specify public, all Facebook friends, or if only certain friends can see list)
