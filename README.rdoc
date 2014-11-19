@@ -1,4 +1,4 @@
-== README
+== GIMME: a wishlist web app
 
 
 This application allows people to easily create and share wishlists!
@@ -14,6 +14,7 @@ Gifters can also visit a page that shows them all of the past items they’ve gi
 If they want, users can designate the date of the wishlist’s associated event. (If they specify their wishlist is for christmas, for example, the date will automatically be set to Dec 25th; their birthday can be found from their Facebook profile). After the event date, users can then see which items remain on their list and then can easily add those items to new lists if they want. 
 
 MODELS
+
 	Users
 		Facebook data
 	Wishlists
