@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
 	has_many :items
 
   def self.omniauth(auth)
-  	binding.pry
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
@@ -12,6 +11,7 @@ class User < ActiveRecord::Base
       user.token = auth.credentials.token
       user.expires_at = Time.at(auth.credentials.expires_at)
       user.save!
+      user.email = auth.info.email
     end
   end
 end

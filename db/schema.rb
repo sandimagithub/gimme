@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141119184431) do
     t.string   "name"
     t.string   "image"
     t.string   "token"
+    t.string   "email"
     t.datetime "expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
