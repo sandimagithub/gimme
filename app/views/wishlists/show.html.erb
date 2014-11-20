@@ -3,6 +3,17 @@ Showing wishlist <%= @wishlist.id %>
 <br>
 
 <%= @wishlist.title %>
+
+<div class="existing">
+
+<% @this_items.each do |item| %>
+	<%= item.title %><br>
+<% end %>
+
+
+</div>
+
+
 <div class="items">
 	
 </div>

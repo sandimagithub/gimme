@@ -61,7 +61,9 @@ Wishes.addItemSlot = function(wishlist_id){
 		var itemHTML = HandlebarsTemplates["new_item"]({id: index});
 		index++;
 		list.append(itemHTML);
+		console.log("ho");
 	};
+	console.log("hi");
 	Wishes.addItemSlot();
 };
 

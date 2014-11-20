@@ -1,55 +1,36 @@
-<div class="row" id="topbar">
+<div data-role="page">
 
-<div class="col-xs-6">
-	<img src="https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png" id="hamburger">
-</div>
-
-<div class="col-xs-6">
-	<div class="text-right">
-	<img id="icon" src="<%= @pic %>">
+	<div data-role="header">
+		<img src="http://i.imgur.com/jeCawcl.png" id="hamburger">
+		<img id="icon" src="<%= @pic %>">
 	</div>
-</div>
-
-</div> 
-<!-- closes topbar div -->
+	<!-- closes header div -->
 
 <%= form_for @wishlist do |f| %>
-<div class="newrow row" id="newrow1">
-	<div class="col-xs-4">
-	<%= f.label :title %>:
-	</div>
-	<div class="col-xs-8">
+	<%= f.label :title %>
+
   	<%= f.text_field :title %>
-  	</div>
-</div>
-<div class="newrow row" id="newrow2">
-	<div class="col-xs-4">
-	<%= f.label :date %>:
-	</div>
-	<div class="col-xs-8">
+  
+	<%= f.label :date %>
+
 	<%= f.text_field :date, id: "datepicker"%>
-	</div>
-</div>
-<div class="newrow row" id="newrow3">
-	<div class="col-xs-5">
-	<%= f.label :description %>:
-	</div>
-	<div class="col-xs-8">
+
+	<%= f.label :description %>
+
 	<%= f.text_area :description %>
-	</div>
-</div>
-<div class="newrow row" id="newrow4">
-	<div class="col-xs-4">
+
 	<%= f.label :type %>
-	</div>
-	<div class="radios col-xs-8">
-  	<%= f.radio_button(:kind, "christmas") %> Christmas <br />
+<div data-role="controlgroup">
+  	<%= f.radio_button(:kind, "christmas")%> Christmas <br />
   	<%= f.radio_button(:kind, "birthday") %> Birthday <br />
   	<%= f.radio_button(:kind, "other") %> Other <br />
-  	</div>
-</div>
-<!-- closes form div -->
+ </div>
+<!-- closes controlgroup div -->
 
   <%= f.submit %>
 
 <% end %>
+
+
+</div>
+<!-- closes data-role div -->
