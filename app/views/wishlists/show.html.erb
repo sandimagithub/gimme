@@ -3,5 +3,13 @@ Showing wishlist <%= @wishlist.id %>
 <br>
 
 <%= @wishlist.title %>
+<div class="items">
+	
+</div>
+<script type="text/javascript">
+  Wishes.addItemSlot(<%= @wishlist.id %>);
+  console.log(Wishes);
+
+</script>
 
 <!-- AJAX for adding an item goes here -->

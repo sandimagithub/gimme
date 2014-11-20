@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 20141119184431) do
   enable_extension "plpgsql"
 
   create_table "items", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "wishlist_id"
     t.string   "title"
     t.string   "url"
     t.string   "img_url"
@@ -38,6 +40,7 @@ ActiveRecord::Schema.define(version: 20141119184431) do
   end
 
   create_table "wishlists", force: true do |t|
+    t.integer  "user_id"
     t.string   "title"
     t.string   "kind"
     t.date     "date"
