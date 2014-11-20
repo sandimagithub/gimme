@@ -52,16 +52,18 @@ var Wishes = {};
 //   count()
 // }
 
-Wishes.addItemSlot = function(id){
+Wishes.addItemSlot = function(wishlist_id){
 	var list = $(".items");
 	var index = 0;
-	window.id = id;
+	window.id = wishlist_id;
 	Wishes.addItemSlot = function(){
 		console.log("index is ",index);
 		var itemHTML = HandlebarsTemplates["new_item"]({id: index});
 		index++;
 		list.append(itemHTML);
+		console.log("ho");
 	};
+	console.log("hi");
 	Wishes.addItemSlot();
 };
 
@@ -89,7 +91,6 @@ Wishes.submitItem = function(itemId){
 				Wishes.addItemSlot();
 			}
 		});
-	Wishes.addItemSlot();
 };
  
 // // Delete a book

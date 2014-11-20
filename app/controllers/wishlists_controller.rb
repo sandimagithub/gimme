@@ -22,6 +22,7 @@ class WishlistsController < ApplicationController
 
 	def show
 		@wishlist = Wishlist.find(params[:id])
+		@this_items = @wishlist.items
 	end
 
 	private
