@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'wishlists#new'
 
   resources :wishlists
+  resources :items
 
   get 'auth/:provider/callback', to: 'wishlists#new'
   get 'logout', to: 'sessions#destroy'

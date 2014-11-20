@@ -13,6 +13,8 @@ class WishlistsController < ApplicationController
 		@wishlist = Wishlist.new(get_wishlist_params)
 		if @wishlist.save
 			redirect_to @wishlist
+			@wishlist.user = User.find(session[:user_id])
+			@wishlist.save
 		else
 			redirect_to Wishlist
 		end
