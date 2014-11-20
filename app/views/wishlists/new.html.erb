@@ -16,35 +16,41 @@
 		<%= f.text_area :description %>
 
 		<%= f.label :type %>
+
+<!-- <fieldset data-role="controlgroup">
+	<input type="radio" id="christmas" name="kind" value="christmas"> 
+		<label for="christmas"> Christmas</label><br>
+	<input type="radio" id="birthday" name="kind" value="birthday"> 
+		<label for="birthday"> birthday</label><br>
+	<input type="radio" id="other" name="kind" value="other"> 
+		<label for="other"> other</label><br>
+</fieldset> -->
+
 	<fieldset data-role="controlgroup">
 
+	  	<div class="radiofield">
 	  	<%= f.radio_button(:kind, "christmas", id: "radio-choice-1")%>
-		<%= f.label :description %>Christmas
-	 
-	  	<%= f.radio_button(:kind, "birthday", id: "radio-choice-2") %> 
-		<%= f.label :description %>Birthday
+	  	<div class="radiolabel"> Christmas </div>
+	  	</div>
 
-	  	<%= f.radio_button(:kind, "other", id: "radio-choice-3") %> 
-		<%= f.label :description %>Other
+	  	<div class="radiofield">
+	  	<%= f.radio_button(:kind, "birthday", id: "radio-choice-2") %>
+	  	<div class="radiolabel"> Birthday </div>
+	  	</div>
+
+	  	<div class="radiofield">
+	  	<%= f.radio_button(:kind, "other", id: "radio-choice-3") %>
+	  	<div class="radiolabel"> Other </div>
+
+</div>
 	 </fieldset>
-
-	<!--  <fieldset data-role="controlgroup">
-		<legend>Choose an event:</legend>
-	     	<input type="radio" name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked" />
-	     	<label for="radio-choice-1">Christmas</label>
-
-	     	<input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2"  />
-	     	<label for="radio-choice-2">Birthday</label>
-
-	     	<input type="radio" name="radio-choice" id="radio-choice-3" value="choice-3"  />
-	     	<label for="radio-choice-3">Other</label>
-
-	</fieldset> -->
-	<!-- closes controlgroup div -->
-
-	  <%= f.submit %>
-<br>
+	<!-- closes controlgroup fieldset -->
+	<button>
+	  <%= f.submit 'Generate', :class => 'submitbutton' %>
+	  </button>
+	<br>
 <% end %>
+<!-- closes form -->
 
  <%= link_to "Log out", logout_path %>
 
@@ -52,13 +58,12 @@
 <div data-role="footer" data-position="fixed" data-theme=>
     <div data-role="navbar">
       <ul>
-        <li><a href="#" data-icon="bullets"> Wish List</a></li>
-        <li><a href="#" data-icon="plus">Add Wish List</a></li>
+        <li><a href="/wishlists" data-icon="bullets"> Wish Lists</a></li>
+        <li><a href="/wishlists/new" data-icon="plus">New Wish List</a></li>
         <li><a href="#" data-icon="plus">More Options</a></li>
       </ul>
     </div>
   </div>
 </div>
-
 </div>
 <!-- closes data-role div -->

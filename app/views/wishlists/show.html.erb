@@ -1,17 +1,24 @@
 Showing wishlist <%= @wishlist.id %>
 
 <br>
-
-<%= @wishlist.title %>
-
+WISHLIST TITLE: <%= @wishlist.title %><br>
+WISHLIST TYPE: <%= @wishlist.kind %><br>
+<% if @belongstouser %>
+	ITS YOURS!!!
+<% else %>
+	THIS IS NOT YOURS. IT BELONGS TO <%= @wishlistowner.name %>
+<% end %>
 
 
 <div class="items">
-	
 </div>
+
+<!-- Add new item will not show if it's not the user's list -->
+<% if @belongstouser %>
 <div class="forms">
-	
 </div>
+<% end %>
+
 <script type="text/javascript">
   Wishes.loadItems(<%= @wishlist.id %>);
 </script>
