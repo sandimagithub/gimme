@@ -6,8 +6,8 @@ class WishlistsController < ApplicationController
 	end
 
 	def create
-		@wishlist = Wishlist.create(get_wishlist_params)
-		redirect_to wishlist_path
+		wishlist = Wishlist.create(get_wishlist_params)
+		render json: wishlist
 	end
 
 

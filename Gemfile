@@ -41,3 +41,4 @@ gem 'pry-rails'
 gem 'twitter-bootstrap-rails', '~> 3.2.0'
 gem 'omniauth-facebook'
 gem "figaro"
+gem 'handlebars_assets'

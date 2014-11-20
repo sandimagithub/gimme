@@ -3,21 +3,19 @@ HAMBERGER
 <img id="icon" src="<%= @pic %>">
 </div>
 
-<%= form_for @wishlist do |f| %>
+<div>
+	<input id = "list_title" type="text" placeholder="title">
+	<input type="text" id = "datepicker" placeholder="date">
+	<br>
+	<input type="radio" name="kind" value="christmas">Christmas
+	<br>
+	<input type="radio" name="kind" value="birthday">Birthday
+	<br>
+	<input type="radio" name="kind" value="other">Other
+	<br>
+	<button onclick="Wishes.createWish()">Submit</button>
+</div>
 
-	<%= f.label :title %>:
-  	<%= f.text_field :title %><br />
-
-	<%= f.label :date %>:
-	<%= f.text_field :date, id: "datepicker"%><br />
-
-	<%= f.label :description %>:
-	<%= f.text_field :description %><br />
-
-	<%= f.label :type %>:<br>
-  	<%= f.radio_button(:kind, "christmas") %> Christmas <br />
-  	<%= f.radio_button(:kind, "birthday") %> Birthday <br />
-  	<%= f.radio_button(:kind, "other") %> Other <br />
-
-  <%= f.submit %>
-<% end %>
+<div class="items">
+	
+</div>
