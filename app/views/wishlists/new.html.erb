@@ -1,7 +1,6 @@
 <div data-role="page">
 
 	<div data-role="header collapsible">
-		<img src="http://i.imgur.com/jeCawcl.png" id="hamburger">
 		<img id="icon" src="<%= @pic %>">
 	</div>
 	<!-- closes header div -->
@@ -28,7 +27,6 @@
 	  	<%= f.radio_button(:kind, "other", id: "radio-choice-3") %> 
 		<%= f.label :description %>Other
 	 </fieldset>
-	 <%= link_to "Log out", logout_path %>
 
 	<!--  <fieldset data-role="controlgroup">
 		<legend>Choose an event:</legend>
@@ -45,9 +43,22 @@
 	<!-- closes controlgroup div -->
 
 	  <%= f.submit %>
-
+<br>
 <% end %>
 
+ <%= link_to "Log out", logout_path %>
+
+
+<div data-role="footer" data-position="fixed" data-theme=>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#" data-icon="bullets"> Wish List</a></li>
+        <li><a href="#" data-icon="plus">Add Wish List</a></li>
+        <li><a href="#" data-icon="plus">More Options</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 </div>
 <!-- closes data-role div -->
