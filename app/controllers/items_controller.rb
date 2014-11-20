@@ -8,6 +8,11 @@ class ItemsController < ApplicationController
 		end
 	end
 
+	def index
+		@items = Wishlist.find(params[:item][:wishlist_id]).items
+    render json: @items
+	end
+
 	private
 
 	def get_item_params

@@ -23,7 +23,10 @@ class WishlistsController < ApplicationController
 
 	def show
 		@wishlist = Wishlist.find(params[:id])
-		@this_items = @wishlist.items
+		if session[:user_id] == @wishlist.user_id
+			@this_items = @wishlist.items
+		else
+			redirect_to "/"
 	end
 
 	private
