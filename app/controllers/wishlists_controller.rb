@@ -1,15 +1,26 @@
 class WishlistsController < ApplicationController
 
+	def index
+		@wishlists = Wishlist.all
+	end
+
 	def new
-		@pic = session[:pic]
 		@wishlist = Wishlist.new
+		@pic = session[:pic]
 	end
 
 	def create
-		@wishlist = Wishlist.create(get_wishlist_params)
-		redirect_to wishlist_path
+		@wishlist = Wishlist.new(get_wishlist_params)
+		if @wishlist.save
+			redirect_to @wishlist
+		else
+			redirect_to Wishlist
+		end
 	end
 
+	def show
+		@wishlist = Wishlist.find(params[:id])
+	end
 
 	private
 
