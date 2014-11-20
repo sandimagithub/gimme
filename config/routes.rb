@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :wishlists
   resources :items
 
-  get 'auth/:provider/callback', to: 'wishlists#new'
+
+  get 'auth/:provider/callback', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
 
   # get 'wishlist', to: 'wishlists#new', as: 'wishlists'
