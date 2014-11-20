@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'logout', to: 'sessions#destroy'
-  get 'wishlist', to: 'wishlists#new', as: 'wishlists'
 
-  post 'wishlist', to: 'wishlists#create'
+  root 'wishlists#new'
+
+  resources :wishlists
+
+  get 'auth/:provider/callback', to: 'wishlists#new'
+  get 'logout', to: 'sessions#destroy'
+
+  # get 'wishlist', to: 'wishlists#new', as: 'wishlists'
+
+  # post 'wishlist', to: 'wishlists#show'
+
+  # get 'wishlist/:id', to: 'wishlists#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
