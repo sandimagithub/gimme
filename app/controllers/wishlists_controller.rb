@@ -6,27 +6,40 @@ class WishlistsController < ApplicationController
 	end
 
 	def new
-		@wishlist = Wishlist.new
-		@pic = session[:pic]
+		if (session[:user_id] == nil)
+			redirect_to signup_path
+		else
+			@wishlist = Wishlist.new
+			@pic = session[:pic]
+		end
 	end
 
 	def create
-		@wishlist = Wishlist.new(get_wishlist_params)
-		if @wishlist.save
-			redirect_to @wishlist
-			@wishlist.user = User.find(session[:user_id])
-			@wishlist.save
+		if (session[:user_id] == nil)
+			redirect_to signup_path
 		else
-			redirect_to Wishlist
+			@wishlist = Wishlist.new(get_wishlist_params)
+			if @wishlist.save
+				redirect_to @wishlist
+				@wishlist.user = User.find(session[:user_id])
+				@wishlist.save
+			else
+				redirect_to Wishlist
+			end
 		end
 	end
 
 	def show
-		@wishlist = Wishlist.find(params[:id])
-		if session[:user_id] == @wishlist.user_id
-			@this_items = @wishlist.items
+		if (session[:user_id] == nil)
+			redirect_to signup_path
 		else
-			redirect_to "/"
+			@wishlist = Wishlist.find(params[:id])
+			if session[:user_id] == @wishlist.user_id
+				@this_items = @wishlist.items
+			else
+				redirect_to "/"
+			end
+		end
 	end
 
 	private

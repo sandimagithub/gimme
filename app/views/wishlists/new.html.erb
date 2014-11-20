@@ -1,33 +1,50 @@
 <div data-role="page">
 
-	<div data-role="header">
+	<div data-role="header collapsible">
 		<img src="http://i.imgur.com/jeCawcl.png" id="hamburger">
 		<img id="icon" src="<%= @pic %>">
 	</div>
 	<!-- closes header div -->
 
 <%= form_for @wishlist do |f| %>
-	<%= f.label :title %>
+		<%= f.label :title %>
+	  	<%= f.text_field :title %>
+	  
+		<%= f.label :date %>
+		<%= f.text_field :date, id: "datepicker"%>
 
-  	<%= f.text_field :title %>
-  
-	<%= f.label :date %>
+		<%= f.label :description %>
+		<%= f.text_area :description %>
 
-	<%= f.text_field :date, id: "datepicker"%>
+		<%= f.label :type %>
+	<fieldset data-role="controlgroup">
 
-	<%= f.label :description %>
+	  	<%= f.radio_button(:kind, "christmas", id: "radio-choice-1")%>
+		<%= f.label :description %>Christmas
+	 
+	  	<%= f.radio_button(:kind, "birthday", id: "radio-choice-2") %> 
+		<%= f.label :description %>Birthday
 
-	<%= f.text_area :description %>
+	  	<%= f.radio_button(:kind, "other", id: "radio-choice-3") %> 
+		<%= f.label :description %>Other
+	 </fieldset>
+	 <%= link_to "Log out", logout_path %>
 
-	<%= f.label :type %>
-<div data-role="controlgroup">
-  	<%= f.radio_button(:kind, "christmas")%> Christmas <br />
-  	<%= f.radio_button(:kind, "birthday") %> Birthday <br />
-  	<%= f.radio_button(:kind, "other") %> Other <br />
- </div>
-<!-- closes controlgroup div -->
+	<!--  <fieldset data-role="controlgroup">
+		<legend>Choose an event:</legend>
+	     	<input type="radio" name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked" />
+	     	<label for="radio-choice-1">Christmas</label>
 
-  <%= f.submit %>
+	     	<input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2"  />
+	     	<label for="radio-choice-2">Birthday</label>
+
+	     	<input type="radio" name="radio-choice" id="radio-choice-3" value="choice-3"  />
+	     	<label for="radio-choice-3">Other</label>
+
+	</fieldset> -->
+	<!-- closes controlgroup div -->
+
+	  <%= f.submit %>
 
 <% end %>
 

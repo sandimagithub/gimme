@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
 
-  root 'wishlists#new'
-
   resources :wishlists
   resources :items
 
+
+  get 'sessions/signup'
+  get 'sessions/login'
+  get 'sessions/home'
+  get 'sessions/logout'
+
+  root 'sessions#signup'
+    get 'login', to: "sessions#login", as: 'login'
+    get 'signup', to: "sessions#signup", as: 'signup'
+
+    # post 'login', to: "sessions#attempt_login"
+    # post 'signup', to: "sessions#create"
+
+    get 'logout', to: "sessions#logout"
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
