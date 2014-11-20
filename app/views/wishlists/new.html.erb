@@ -1,7 +1,17 @@
-HAMBERGER
-<div class="text-right">
-<img id="icon" src="<%= @pic %>">
+<div class="row" id="topbar">
+
+<div class="col-xs-6">
+	<img src="https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png" id="hamburger">
 </div>
+
+<div class="col-xs-6">
+	<div class="text-right">
+	<img id="icon" src="<%= @pic %>">
+</div>
+</div>
+
+</div> 
+<!-- closes topbar div -->
 
 <%= form_for @wishlist do |f| %>
 

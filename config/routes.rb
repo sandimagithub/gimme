@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'wishlists#new'
+
   resources :wishlists
 
   get 'auth/:provider/callback', to: 'wishlists#new'
