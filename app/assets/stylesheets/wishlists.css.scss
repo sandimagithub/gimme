@@ -5,4 +5,30 @@
 
 #hamburger {
 	width: 30px;
+	margin: 10px;
+}
+
+#icon {
+	padding: 5px;
+	border-radius: 10px;
+}
+
+.newrow {
+	padding: 10px;
+	text-decoration: none;
+}
+
+label {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+}
+
+.radios {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+}
+
+.submitbutton {
+	padding-top: 100%;
+	margin-top: -60px;
 }

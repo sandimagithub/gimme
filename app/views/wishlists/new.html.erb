@@ -7,27 +7,49 @@
 <div class="col-xs-6">
 	<div class="text-right">
 	<img id="icon" src="<%= @pic %>">
-</div>
+	</div>
 </div>
 
 </div> 
 <!-- closes topbar div -->
 
 <%= form_for @wishlist do |f| %>
-
+<div class="newrow row" id="newrow1">
+	<div class="col-xs-4">
 	<%= f.label :title %>:
-  	<%= f.text_field :title %><br />
-
+	</div>
+	<div class="col-xs-8">
+  	<%= f.text_field :title %>
+  	</div>
+</div>
+<div class="newrow row" id="newrow2">
+	<div class="col-xs-4">
 	<%= f.label :date %>:
-	<%= f.text_field :date, id: "datepicker"%><br />
-
+	</div>
+	<div class="col-xs-8">
+	<%= f.text_field :date, id: "datepicker"%>
+	</div>
+</div>
+<div class="newrow row" id="newrow3">
+	<div class="col-xs-5">
 	<%= f.label :description %>:
-	<%= f.text_field :description %><br />
-
-	<%= f.label :type %>:<br>
+	</div>
+	<div class="col-xs-8">
+	<%= f.text_area :description %>
+	</div>
+</div>
+<div class="newrow row" id="newrow4">
+	<div class="col-xs-4">
+	<%= f.label :type %>
+	</div>
+	<div class="radios col-xs-8">
   	<%= f.radio_button(:kind, "christmas") %> Christmas <br />
   	<%= f.radio_button(:kind, "birthday") %> Birthday <br />
   	<%= f.radio_button(:kind, "other") %> Other <br />
+  	</div>
+</div>
+<!-- closes form div -->
 
   <%= f.submit %>
+
 <% end %>
