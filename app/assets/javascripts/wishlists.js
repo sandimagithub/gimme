@@ -4,74 +4,49 @@
 // Namespace
 var Wishes = {};
 
-
-
-
-// create a wishlist
-// Wishes.createWish = function(){
-// 	var kind = undefined;
-// 	$("input[name='kind']").each(function(x,y){
-// 		if($(y).prop("checked")){
-// 			kind = y.value;
-// 		}
-// 	});
-// 	var title = $("#list_title").val();
-// 	var date = $("#datepicker").val();
-// 	console.log(kind, title, date);
-
-// 	var id = $.ajax({
-// 		method: "post",
-// 		data: {"wishlist":
-// 			{
-// 				kind: kind, 
-// 				title: title, 
-// 				date: date
-// 			}
-// 		},
-// 		error: function(){
-// 			console.log("error");
-// 		},
-// 		success: function(){
-// 			console.log("success");
-// 			Wishes.addItemSlot();
-// 		}
-// 	});
-// 	console.log("id is ",id.responseJSON,id);
-// };
-
-
-
-// add Item slot is a closure index using function and as such on 
-// it's first call it will redefine itself
-// var count = function(){
-//   var index = 0;
-//   count = function(){
-//     console.log(index);
-//     index ++;
-//   }
-//   count()
-// }
-
-Wishes.addItemSlot = function(wishlist_id){
-	var list = $(".forms");
-	var index = 0;
+Wishes.loadItems= function(wishlist_id){
 	window.id = wishlist_id;
-	Wishes.addItemSlot = function(){
-		console.log("index is ",index);
-		var itemHTML = HandlebarsTemplates["new_item"]({id: index});
-		index++;
-		list.append(itemHTML);
-		console.log("ho");
-	};
-	console.log("hi");
+		$.ajax({
+			url: "/items",
+			data: {"item":
+				{ 
+					wishlist_id: id,  
+				}
+			},
+			error: function(){
+				console.log("error");
+			},
+			success: function(items){
+				console.log("success");
+				items.forEach(function(item){Wishes.addItem(item);});
+			}
+		});
+	// items.forEach(function(){
+	// 	console.log(items);
+	// 	var itemHTML = HandlebarsTemplates["new_item"]
+	// });
 	Wishes.addItemSlot();
 };
+
+Wishes.addItemSlot = function(){
+	var list = $(".forms");
+	var formHTML = HandlebarsTemplates["new_form"];
+	list.append(formHTML);
+};
+
+Wishes.addItem = function(item){
+	console.log(item);
+	var list = $(".items");
+	var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url});
+	list.append(itemHTML);
+};
+
 
 Wishes.submitItem = function(itemId){
 	console.log(itemId);
 	console.log("you got inside of submitItem");
-	var name = $("#"+itemId+"name").val();
-	var pic = $("#"+itemId+"pic").val();
+	var name = $("#name").val();
+	var pic = $("#pic").val();
 	console.log(id,name,pic);
 		$.ajax({
 			method: "post",
@@ -88,9 +63,11 @@ Wishes.submitItem = function(itemId){
 			},
 			success: function(){
 				console.log("success");
-				Wishes.addItemSlot();
+				Wishes.addItem({title:name,img_url:pic});
 			}
 		});
+	$("#name").val("");
+	$("#pic").val("");
 };
  
 // // Delete a book

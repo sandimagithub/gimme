@@ -4,14 +4,6 @@ Showing wishlist <%= @wishlist.id %>
 
 <%= @wishlist.title %>
 
-<div class="existing">
-
-<% @this_items.each do |item| %>
-	<%= item.title %><br>
-<% end %>
-
-
-</div>
 
 
 <div class="items">
@@ -21,7 +13,7 @@ Showing wishlist <%= @wishlist.id %>
 	
 </div>
 <script type="text/javascript">
-  Wishes.addItemSlot(<%= @wishlist.id %>);
+  Wishes.loadItems(<%= @wishlist.id %>);
 </script>
 
 <!-- AJAX for adding an item goes here -->
