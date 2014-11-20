@@ -79,6 +79,11 @@ GEM
     guard-rspec (4.3.1)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
+    handlebars_assets (0.18)
+      execjs (>= 1.2.9)
+      multi_json
+      sprockets (>= 2.0.3)
+      tilt
     hashie (3.3.1)
     hike (1.2.3)
     hitimes (1.2.2)
@@ -233,7 +238,11 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   factory_girl_rails
   figaro
+<<<<<<< HEAD
   guard-rspec
+=======
+  handlebars_assets
+>>>>>>> 6b744a9e0809645c911516180d416c8dd682054c
   jbuilder (~> 2.0)
   jquery-rails
   launchy

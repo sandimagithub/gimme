@@ -1,23 +1,36 @@
-HAMBERGER
+<div data-role="page">
 
-<img id="icon" src="<%= @pic %>">
-
+	<div data-role="header">
+		<img src="http://i.imgur.com/jeCawcl.png" id="hamburger">
+		<img id="icon" src="<%= @pic %>">
+	</div>
+	<!-- closes header div -->
 
 <%= form_for @wishlist do |f| %>
+	<%= f.label :title %>
 
-	<%= f.label :title %>:
-  	<%= f.text_field :title %><br />
+  	<%= f.text_field :title %>
+  
+	<%= f.label :date %>
 
-	<%= f.label :date %>:
-	<%= f.text_field :date, id: "datepicker"%><br />
+	<%= f.text_field :date, id: "datepicker"%>
 
-	<%= f.label :description %>:
-	<%= f.text_field :description %><br />
+	<%= f.label :description %>
 
-	<%= f.label :type %>:<br>
-  	<%= f.radio_button(:kind, "christmas") %> Christmas <br />
+	<%= f.text_area :description %>
+
+	<%= f.label :type %>
+<div data-role="controlgroup">
+  	<%= f.radio_button(:kind, "christmas")%> Christmas <br />
   	<%= f.radio_button(:kind, "birthday") %> Birthday <br />
   	<%= f.radio_button(:kind, "other") %> Other <br />
+ </div>
+<!-- closes controlgroup div -->
 
   <%= f.submit %>
+
 <% end %>
+
+
+</div>
+<!-- closes data-role div -->

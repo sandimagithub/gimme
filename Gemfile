@@ -73,3 +73,4 @@ group :development do
   # omg. this is better than butter on sliced bread.
   gem 'pry-byebug'
 end
+gem 'handlebars_assets'

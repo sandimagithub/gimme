@@ -1,2 +1,24 @@
-<h1> My current wishlist </h1>
- <h3> <%= @wishlist.title %> </h3>
+Showing wishlist <%= @wishlist.id %>
+
+<br>
+
+<%= @wishlist.title %>
+
+<div class="existing">
+
+<% @this_items.each do |item| %>
+	<%= item.title %><br>
+<% end %>
+
+
+</div>
+
+
+<div class="items">
+	
+</div>
+<script type="text/javascript">
+  Wishes.addItemSlot(<%= @wishlist.id %>);
+</script>
+
+<!-- AJAX for adding an item goes here -->
