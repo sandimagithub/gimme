@@ -1,7 +1,8 @@
 class WishlistsController < ApplicationController
 
 	def index
-		@wishlists = Wishlist.all
+    @wishlists = Wishlist.all
+    @new_wishlist = Wishlist.new
 	end
 
 	def new
