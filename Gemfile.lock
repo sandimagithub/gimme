@@ -238,11 +238,8 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   factory_girl_rails
   figaro
-<<<<<<< HEAD
   guard-rspec
-=======
   handlebars_assets
->>>>>>> 6b744a9e0809645c911516180d416c8dd682054c
   jbuilder (~> 2.0)
   jquery-rails
   launchy
