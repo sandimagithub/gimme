@@ -29,6 +29,7 @@ body {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
 	outline: none !important;
 	box-shadow: none !important;
+	background-color: blue !important;
 }
 	div {
 		box-shadow: none !important;
@@ -79,6 +80,7 @@ body {
 	border-bottom: 1px solid black;
 	padding: 2px;
 	overflow: hidden;
+	text-shadow: none;
 }
 /*item title*/
 .itemlisttitle {

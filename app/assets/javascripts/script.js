@@ -16,6 +16,7 @@ $(document).ready(function () {
 });
 // close document ready
 
+// Called when '+new item' is pressed
 Gimme.addNewItem = function() {
 	console.log('doin it');
 	$('.firstwishbutton').addClass('hide');
@@ -23,14 +24,20 @@ Gimme.addNewItem = function() {
 	$('#name').focus();
 };
 
+// Called when 'More' footer button is pressed
 var open=false;
 Gimme.showMenu = function() {
-	console.log(open);
 	if (!open) {
 		$('.menu').animate({'bottom': '0%'}, 400);
 		open=true;
 	} else {
 		$('.menu').animate({'bottom': '-100%'}, 400);
 		open=false;
+		$('.morebutton').removeClass('ui-btn-active');
 	}
 };
+
+
+
+
+
