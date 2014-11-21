@@ -1,28 +1,35 @@
 
-<li class="listitem">
+<!-- Entire list item. Has the click listener. Id = the id of the item. -->
+<li class="listitem" id="{{item.id}}">
+
+	<!-- Wrapper for all of the list item's things (title, img, descrip, link) -->
+	<div class="listcontents">
 	
-	<div class="listhead">
-		<div id="itemlistname">
+	<!-- item title -->
+		<div class="itemlisttitle">
 		{{name}}
 		</div>
+	<!-- item image -->
 		{{#if pic}}
 		<img class="listpic smlistpic ui-li-icon" src="{{pic}}">
 		{{/if}}
 
+	<!-- Wrapper for additional item info, shown onclick-->
 		<div class="hide listinfo">
-		{{#if description}}
-			{{description}}<br>
-		{{else}}
-			nothing to see here!<br>
-		{{/if}}
-		{{#if url}}
-			<a href="{{url}}" target="_blank">view online</a>
-		{{/if}}
+			{{#if description}}
+				{{description}}<br>
+			{{else}}
+				nothing to see here!<br>
+			{{/if}}
+			{{#if url}}
+				<a href="{{url}}" target="_blank">view online</a>
+			{{/if}}
 		</div>
+		<!-- closes additional info div -->
 	</div>
 	<!-- close listhead -->
-
 </li>
+<!-- close entire list item -->
 
 <script>
 
@@ -50,7 +57,7 @@ $('.listitem').click(function() {
 		dispic.removeClass('smlistpic');
 		dispic.addClass('biglistpic');
 		dis.removeClass('hide');
-		$(this).css('height', '120px');
+		$(this).css('height', '180px');
 	}
 
 });
