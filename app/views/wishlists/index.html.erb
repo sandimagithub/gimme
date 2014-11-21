@@ -5,9 +5,13 @@
 	<a href="/wishlists/<%= wish.id %>">
   <p><%= wish.title %></p>
   </a>
-  <br>
+
+  <%= form_for wish, method: "DELETE"  do |f| %>
+    <%= submit_tag("Delete Wishlist") %>
+  <% end %>
 
 </div>
+<br>
 <% end %>
 
 <!-- slide menu panel -->
