@@ -1,5 +1,9 @@
-<div>
-	<input type="text" id = "name" placeholder="what's the thing?">
-	<input type="text" id = "pic" placeholder="picture_url">
-	<button onclick="Wishes.submitItem()">Submit</button>
+
+<button id="newwishbutton" class="firstwishbutton">+new item</button>
+<div id="newcontainer" class="hide">
+	<input type="text" data-mini="true" class="newfield" id = "name" placeholder="item name" maxlength="20">
+	<input type="text" data-mini="true" class="newfield" id = "description" placeholder="details" maxlength="40">
+	<input type="text" data-mini="true" class="newfield" id = "url" placeholder="item url (optional)">
+	<input type="text" data-mini="true" class="newfield" id = "pic" placeholder="image url (optional)">
+	<button id="newwishbutton" class="secondwishbutton" onclick="Wishes.submitItem()">add item</button>
 </div>

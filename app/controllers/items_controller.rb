@@ -13,9 +13,15 @@ class ItemsController < ApplicationController
     render json: @items
 	end
 
+	def destroy
+		item = Item.find(params[:id])
+		item.destroy
+		redirect_to wishlist_path
+	end
+
 	private
 
 	def get_item_params
-		params.require(:item).permit(:title, :wishlist_id, :img_url)
+		params.require(:item).permit(:title, :wishlist_id, :img_url, :description, :url)
 	end
 end

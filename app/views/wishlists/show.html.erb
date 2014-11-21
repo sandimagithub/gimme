@@ -1,19 +1,53 @@
-Showing wishlist <%= @wishlist.id %>
 
-<br>
-
-<%= @wishlist.title %>
-
-
-
-<div class="items">
-	
+<div data-role="header collapsible" class="heading">
+		<div id="headtitle" class="ui-btn-left">
+		<%= @wishlist.title %>
+		</div>
+		<img id="icon" class ="ui-btn-right" src="<%= @pic %>">
 </div>
+
+<div id="listsubtitle">
+wishlist type: <%= @wishlist.kind %><br>
+<% if @belongstouser %>
+	this is your list!
+<% else %>
+	by: <%= @wishlistowner.name %>
+<% end %>
+<p id="listdescrip"><%= @wishlist.description %></p>
+</div>
+
+<div id="spacer"></div>
+<!-- list of existing items -->
+<ul data-role="listview" class="items">
+</ul>
+
+<!-- Add new item will not show if it's not the user's list -->
+<% if @belongstouser %>
 <div class="forms">
-	
 </div>
+<% end %>
+
+
+<% if @user_id %>
+<!-- if the user doesn't own the list then @user_id will exsist in that case we want to call Wishes.loadItems(wich initializes the page) with the user_id so we can have claim buttons -->
+<script type="text/javascript">
+  Wishes.loadItems(<%= @wishlist.id %>, <%= @user_id %>);
+</script>
+
+<% else %>
+
 <script type="text/javascript">
   Wishes.loadItems(<%= @wishlist.id %>);
 </script>
 
-<!-- AJAX for adding an item goes here -->
+<% end %>
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="/wishlists" data-icon="bullets"> All Lists</a></li>
+        <li><a href="/wishlists/new" data-icon="plus">New List</a></li>
+        <li><a href="#" data-icon="star">More</a></li>
+      </ul>
+    </div>
+  </div>

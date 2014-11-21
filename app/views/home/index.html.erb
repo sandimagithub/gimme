@@ -1,0 +1,19 @@
+<h1>Current Wishlists</h1>
+
+<% @wishlists.each do |wish| %>
+<div class='wishlist'>
+	<h2>Wishlist Title: <%= wish.title %></h2>
+
+</div>
+<% end %>
+
+<%= form_for @new_wishlist do |f| %>
+  <%= f.label :title %>:
+  <%= f.text_field :title %>
+  <%= f.label :type %>:<br>
+    <%= f.radio_button(:kind, "christmas") %> Christmas <br />
+    <%= f.radio_button(:kind, "birthday") %> Birthday <br />
+    <%= f.radio_button(:kind, "other") %> Other <br />
+
+  <%= f.submit %>
+<% end %> 

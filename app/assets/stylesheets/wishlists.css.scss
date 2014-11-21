@@ -2,33 +2,201 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/*/
 
+/*COLORS
+purple: #81479B
+yellow:  #FCDC55
+blue: #28AAE0
+periwinkle: #BDC8E2*/
 
-#hamburger {
+.hide {
+	display: none;
+}
+#spacer {
+	height: 20px;
+}
+
+/*set the body to a max width - currently excludes footers and headers*/
+/*#fix {
+	max-width: 500px;
+	margin: 0 auto;
+}*/
+
+body {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+	div {
+		box-shadow: none !important;
+		border: none !important;
+	}
+	label {
+		box-shadow: none !important;
+		border: none !important;
+	}
+	textarea {
+		box-shadow: none !important;
+		border: none !important;
+	}
+	.ui-input-text {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+		font-weight: 300 !important;
+	}
+	button {
+		box-shadow: none !important;
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
+	}
+	textarea {
+		box-shadow: none !important;
+		border: none !important;
+	}
+	input {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
+		text-decoration: none;
+	}
+	a {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
+	color: #81479B !important;
+	}
+	a:hover {
+		color: #28AAE0 !important;
+		text-decoration: none !important;
+	}
+	/*rid of all boarders/shadows*/
+
+
+/* ================== */
+/* show wishlist page */
+/* ================== */
+/*list icon*/
+.biglistpic {
+	height: 60px;
+	width: 60px;
+}
+.smlistpic {
+	height: 30px;
 	width: 30px;
-	margin: 10px;
+}
+.listpic {
+	float: right;
+	border: none;
+	overflow: hidden;
+	padding-top: 3px;
+}
+.ui-li-icon {
+}
+.listinfo {
+	font-size: 11px;
+}
+/*each li*/
+.listitem {
+	height: 35px;
+	clear: both;
+	border-bottom: 1px solid black;
+	padding: 2px;
+	overflow: hidden;
+}
+#listitem:hover {
+	opacity: .5;
+}
+/*class of ul*/
+.items {
+	border-top: 1px solid black;
 }
 
-#icon {
-	padding: 5px;
-	border-radius: 10px;
+#newcontainer {
+	padding-top: 10px;
+}
+#newcontainer input{
+	margin-top: -10px;
+	font-size: 10px;
 }
 
-.newrow {
-	padding: 10px;
-	text-decoration: none;
+#newwishbutton {
+	text-decoration: none !important;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
+	font-weight: 400 !important;
+	height: 20px;
+	font-size: 10px;
+	padding-top: 3px;
+}
+#listsubtitle {
+	margin-top: -18px;
+	font-size: 15px;
+	color: #81479B;
+}
+#listdescrip {
+	font-size: 12px;
+	padding-top: 8px;
 }
 
-label {
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-   font-weight: 300;
+/* ================== */
+/*  new wishlist page */
+/* ================== */
+.heading {
+	height: 70px;
 }
+	#headtitle {
+		font-size: 30px;
+	}
+	#icon {
+		padding: 5px;
+		border-radius: 10px;
+	}
+	.submitbutton {
+		border: none;
+		background-color: rgba(0, 0, 0, 0);
+		text-decoration: none !important;
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
+		font-weight: 400 !important;
+	}
+	/*radio button section*/
+	.ui-grid-c {
+		padding-top: 10px;
+		padding-bottom: 5px;
+	}
+	.radiolabel {
+		font-size: .6em;
+		margin-left: 30px;
+		margin-top: -7px;
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	}
+	#radiotitle {
+		float: left;
+		margin-left: 5px;
+		color: gray;
+	}
+	/*end*/
 
-.radios {
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-   font-weight: 300;
-}
+	/*placeholder text*/
+	::-webkit-input-placeholder {
+		font-size: 10px;
+	   color: gray;
+	   text-shadow: none;
+	   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	}
+		:-moz-placeholder { /* Firefox 18- */
+		   color: gray;
+		   text-shadow: none;
+		   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;  
+		}
 
-.submitbutton {
-	padding-top: 100%;
-	margin-top: -60px;
-}
+		::-moz-placeholder {  /* Firefox 19+ */
+		   color: gray;
+		   text-shadow: none;
+		   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;  
+		}
+
+		:-ms-input-placeholder {  
+		   color: gray;
+		   text-shadow: none;
+		   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+		}
+
+	/* entry text */
+	.ui-link {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
+		font-weight: 300 !important;
+	}
+
+
