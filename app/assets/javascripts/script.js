@@ -16,10 +16,5 @@ $(document).ready(function () {
  //    window.close(url);
 	// });
 
-	function getListLength() {
-		var itemlist = document.getElementsByClassName('listitem');
-		console.log(itemlist.length);
-	}
-
 });
 // close document ready
