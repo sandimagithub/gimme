@@ -16,6 +16,12 @@ $(document).ready(function () {
 });
 // close document ready
 
+
+
+
+//when you click the add item button this function opens up the form 
+//and hides the button and shows a button that will submit the form
+
 Gimme.addNewItem = function() {
 	console.log('doin it');
 	$('.firstwishbutton').addClass('hide');

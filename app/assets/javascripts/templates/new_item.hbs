@@ -16,11 +16,15 @@
 		{{else}}
 			nothing to see here!<br>
 		{{/if}}
+
 		{{#if url}}
 			<a href="{{url}}" target="_blank">view online</a>
 		{{/if}}
 
-		<button onclick="Claim">Claim</button>
+		{{#if userId}}
+		<button onclick="Wishes.claim({{this}}, {{userId}})">Claim</button>
+		{{/if}}
+
 		</div>
 	</div>
 	<!-- close listhead -->

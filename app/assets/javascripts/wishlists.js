@@ -4,9 +4,9 @@
 // Namespace
 var Wishes = {};
 
-Wishes.loadItems= function(wishlist_id, user_id){
-	window.wishlist_id = wishlist_id;
-	window.user_id = user_id;
+Wishes.loadItems= function(wishlistId, userId){
+	window.wishlistId = wishlistId;
+	window.userId = userId;
 	//this allows us to acces the id's of the wishlist and the loged in user
 	// anywhere in our javascript
 
@@ -18,11 +18,12 @@ Wishes.loadItems= function(wishlist_id, user_id){
 				{ 
 					//it sends the wishlist id so as to get the items associated 
 					//with the current wishlist
-					wishlist_id: wishlist_id,  
+					wishlist_id: wishlistId,  
 				}
 			},
 			error: function(){
-				console.log("error");
+				console.log("load_items error");
+				debugger
 			},
 			success: function(items){
 				//if the ajax query succeds add each item to the page
@@ -47,7 +48,7 @@ Wishes.addItemSlot = function(){
 Wishes.addItem = function(item){
 	console.log(item);
 	var list = $(".items");
-	var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url});
+	var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url, userId:userId});
 	list.append(itemHTML);
 };
 
@@ -56,17 +57,18 @@ Wishes.submitItem = function(itemId){
 	$('#newcontainer').addClass('hide');
 	console.log(itemId);
 	console.log("you got inside of submitItem");
+	console.log(wishlist_id)
 	var name = $("#name").val();
 	var url = $("#url").val();
 	var pic = $("#pic").val();
 	var description = $("#description").val();
-	console.log(wishlist_id,name,pic,description,url);
+	console.log(wishlistId,name,pic,description,url);
 		$.ajax({
 			method: "post",
 			url: "/items",
 			data: {"item":
 				{ 
-					wishlist_id: wishlist_id,  
+					wishlist_id: wishlistId,  
 					title: name,
 					description: description,
 					url: url, 
