@@ -8,6 +8,10 @@ yellow:  #FCDC55
 blue: #28AAE0
 periwinkle: #BDC8E2*/
 
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+	background-color: #BDC8E2;
+}
+
 .hide {
 	display: none;
 }
@@ -19,8 +23,13 @@ periwinkle: #BDC8E2*/
 /*#fix {
 	max-width: 500px;
 	margin: 0 auto;
+	text-shadow: none !important;
 }*/
 
+/* ------------------------------------------------- */
+/* Undoing jQuery Mobile CSS defaults  */
+/* removes shadows/outlines, adds helvetica neue */
+/* ------------------------------------------------- */
 body {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
 	outline: none !important;
@@ -56,13 +65,12 @@ body {
 	}
 	a {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
-	color: #81479B !important;
+	color: black !important;
 	}
 	a:hover {
 		color: #28AAE0 !important;
 		text-decoration: none !important;
 	}
-	/*rid of all boarders/shadows*/
 
 
 /* ================== */
@@ -74,18 +82,19 @@ body {
 	height: 65px;
 	clear: both;
 	border-bottom: 1px solid black;
-	padding: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 	overflow: hidden;
+	text-shadow: none;
+	margin: 0;
 }
-
 /*item title*/
 .itemlisttitle {
-	font-size: 24px;
+	font-size: 22px;
 	clear: both;
 	float: left;
 	width: 60%;
 }
-
 /*list icon*/
 .listpic {
 	float: right;
@@ -102,7 +111,6 @@ body {
 	height: 60px;
 	width: 60px;
 }
-
 /*list info*/
 .listinfo {
 	font-size: 14px;
@@ -135,7 +143,6 @@ body {
 #listsubtitle {
 	margin-top: -18px;
 	font-size: 15px;
-	color: #81479B;
 }
 #listdescrip {
 	font-size: 12px;

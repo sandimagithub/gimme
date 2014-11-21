@@ -40,14 +40,26 @@ wishlist type: <%= @wishlist.kind %><br>
   Wishes.loadItems(<%= @wishlist.id %>);
 </script>
 
+
+<% if @belongstouser %>
+  <div id="spacer"></div>
 <% end %>
+
+<!-- slide menu panel -->
+<div class="menu" id="menu">
+<ul>
+  <li><a href="#">View claimed items</a></li>
+  <li><%= link_to "Log out", logout_path %></li>
+</ul>
+</div>
+
 
 <div data-role="footer" data-position="fixed" data-tap-toggle="false">
     <div data-role="navbar">
       <ul>
         <li><a href="/wishlists" data-icon="bullets"> All Lists</a></li>
         <li><a href="/wishlists/new" data-icon="plus">New List</a></li>
-        <li><a href="#" data-icon="star">More</a></li>
+        <li><a href="#" onclick="Gimme.showMenu()" class="morebutton" data-icon="star">More</a></li>
       </ul>
     </div>
   </div>
