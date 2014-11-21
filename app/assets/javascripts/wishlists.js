@@ -27,7 +27,7 @@ Wishes.loadItems= function(wishlistId, userId){
 			},
 			success: function(items){
 				//if the ajax query succeds add each item to the page
-				console.log("success");
+				console.log("load items success");
 				items.forEach(function(item){Wishes.addItem(item);});
 				getListLength();
 			}
@@ -45,19 +45,54 @@ Wishes.addItemSlot = function(){
 	list.append(formHTML);
 };
 
+
+
 Wishes.addItem = function(item){
-	console.log(item);
-	var list = $(".items");
-	var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url, userId:userId});
-	list.append(itemHTML);
+	console.log("item is ",item);
+	var claimName = "123";
+	if(item.user_id){
+		Wishes.getClaimName(item.user_id, function(claimName){
+			console.log("claimName is",claimName);
+			var list = $(".items");
+			var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url, userId:userId, itemId: item.id, claimName:claimName});
+			list.append(itemHTML);
+		});
+	}else{
+		var list = $(".items");
+		var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url, userId:userId, itemId: item.id});
+		list.append(itemHTML);
+	}
 };
+
+
+
+Wishes.getClaimName = function(user_id, callback){
+	$.ajax({
+			url: "/sessions/user",
+			data: {
+				user_id: user_id
+			},
+			error: function(){
+				console.log("find user error");
+			},
+			success: function(user){
+				callback(user.name);
+			}
+		});
+};
+
+
+
+
+
+
 
 Wishes.submitItem = function(itemId){
 	$('.firstwishbutton').removeClass('hide');
 	$('#newcontainer').addClass('hide');
 	console.log(itemId);
 	console.log("you got inside of submitItem");
-	console.log(wishlist_id)
+	console.log(wishlistId);
 	var name = $("#name").val();
 	var url = $("#url").val();
 	var pic = $("#pic").val();
@@ -78,9 +113,9 @@ Wishes.submitItem = function(itemId){
 			error: function(){
 				console.log("error");
 			},
-			success: function(){
-				console.log("success");
-				console.log("description is "+description);
+			success: function(item){
+				console.log("submit success");
+				console.log(item);
 				Wishes.addItem({title:name,img_url:pic,description:description,url:url});
 				console.log("done adding");
 			}
@@ -108,6 +143,33 @@ $('#listhead').click(function() {
 // 	}
 // };
 
+	Wishes.claim = function(itemId, userId){
+		clickedLi = $("#"+itemId);
+		var classes = clickedLi.attr('class').split(" ");
+		if(classes.indexOf("claimed") === -1){
+			console.log("claiming list item ",clickedLi);
+			clickedLi.addClass("claimed");
+			$.ajax({
+				method: "post",
+				url: "/items/claim",
+				data: {"item":
+					{ 
+						user_id: userId,  
+						item_id: itemId,
+					}
+				},
+				error: function(){
+					console.log("claim error");
+				},
+				success: function(){
+					console.log("claim success");
+				}
+			});		
+		}else{
+			console.log("already claimed");
+		}
+	};
+
 // function isUnclaimed(clickedLi) {
 // 	for (var cls in clickedLi.classList) {
 // 		if (cls === "claimed") {
@@ -118,7 +180,7 @@ $('#listhead').click(function() {
 
 function getListLength() {
 		var itemlist = document.getElementsByClassName('listitem');
-		console.log(itemlist.length);
+		console.log("list length is ",itemlist.length);
 	}
  
 
@@ -133,3 +195,22 @@ function getListLength() {
 // 	    }
 // 	});
 // };
+
+
+
+var count = function(){
+	var index = 0;
+	count = function(){
+		index++;
+		console.log(index);
+	};
+	count();
+};
+
+
+
+
+
+
+
+

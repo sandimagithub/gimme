@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get 'sessions/login'
   get 'sessions/home'
   get 'sessions/logout'
+  get 'sessions/user', to: 'sessions#find_user'
 
+  post 'items/claim', to: 'items#claim'
   root 'sessions#signup'
     get 'login', to: "sessions#login", as: 'login'
     get 'signup', to: "sessions#signup", as: 'signup'

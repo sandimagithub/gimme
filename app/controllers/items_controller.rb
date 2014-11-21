@@ -9,6 +9,13 @@ class ItemsController < ApplicationController
 		end
 	end
 
+	def claim
+		item = Item.find(params[:item][:item_id])
+		item.user = User.find(params[:item][:user_id])
+		item.save
+		render json: item
+	end
+
 	def index
 		@items = Wishlist.find(params[:item][:wishlist_id]).items
     render json: @items

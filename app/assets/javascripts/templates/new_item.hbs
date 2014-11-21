@@ -1,16 +1,28 @@
 
 
-<li class="listitem">
+<!-- Entire list item. Has the click listener. Id = the id of the item. -->
+<!-- if the item has been claimed give it the class claimed -->
+{{#if claimName}}
+<li class="listitem claimed" id="{{itemId}}">
+{{else}}
+<li class="listitem" id="{{itemId}}">
+{{/if}}
+
+	<!-- Wrapper for all of the list item's things (title, img, descrip, link) -->
+	<div class="listcontents">
 	
-	<div class="listhead">
-		<div id="itemlistname">
+	<!-- item title -->
+		<div class="itemlisttitle">
 		{{name}}
 		</div>
+	<!-- item image -->
 		{{#if pic}}
 		<img class="listpic smlistpic ui-li-icon" src="{{pic}}">
 		{{/if}}
 
+	<!-- Wrapper for additional item info, shown onclick-->
 		<div class="hide listinfo">
+
 		{{#if description}}
 			{{description}}<br>
 		{{else}}
@@ -21,15 +33,23 @@
 			<a href="{{url}}" target="_blank">view online</a>
 		{{/if}}
 
+
+<!-- if the item has been claimed display the name of the user who claimed it -->
 		{{#if userId}}
-		<button onclick="Wishes.claim({{this}}, {{userId}})">Claim</button>
+			{{#if claimName}}
+				claimed by {{claimName}}
+			{{else}}
+				<button onclick="Wishes.claim({{itemId}}, {{userId}})">Claim</button>
+			{{/if}}
 		{{/if}}
 
+
 		</div>
+		<!-- closes additional info div -->
 	</div>
 	<!-- close listhead -->
-
 </li>
+<!-- close entire list item -->
 
 <script>
 
@@ -57,7 +77,7 @@ $('.listitem').click(function() {
 		dispic.removeClass('smlistpic');
 		dispic.addClass('biglistpic');
 		dis.removeClass('hide');
-		$(this).css('height', '120px');
+		$(this).css('height', '180px');
 	}
 
 });

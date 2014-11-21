@@ -68,7 +68,31 @@ body {
 /* ================== */
 /* show wishlist page */
 /* ================== */
+
+/*each li*/
+.listitem {
+	height: 65px;
+	clear: both;
+	border-bottom: 1px solid black;
+	padding: 2px;
+	overflow: hidden;
+}
+
+/*item title*/
+.itemlisttitle {
+	font-size: 24px;
+	clear: both;
+	float: left;
+	width: 60%;
+}
+
 /*list icon*/
+.listpic {
+	float: right;
+	border: none;
+	overflow: hidden;
+	padding-top: 1px;
+}
 .biglistpic {
 	height: 110px;
 	width: 110px;
@@ -78,56 +102,36 @@ body {
 	height: 60px;
 	width: 60px;
 }
-.listpic {
-	float: right;
-	border: none;
-	overflow: hidden;
-	padding-top: 2px;
-}
-.ui-li-icon {
-}
+
+/*list info*/
 .listinfo {
 	font-size: 14px;
-	width: 250px;
+	clear: left;
 }
-/*each li*/
-.listitem {
-	height: 65px;
-	clear: both;
-	border-bottom: 1px solid black;
-	padding: 2px;
-	overflow: hidden;
-}
-#listitem:hover {
-	opacity: .5;
-}
-/*item title*/
-#itemlistname {
-	font-size: 26px;
-	width: 250px;
-	float: left;
-}
+
 /*class of ul*/
 .items {
 	border-top: 1px solid black;
 }
 
+/*new item form*/
 #newcontainer {
 	padding-top: 10px;
 }
 #newcontainer input{
-	margin-top: -10px;
-	font-size: 10px;
+	margin-top: 0px;
+	font-size: 15px;
 }
-
 #newwishbutton {
 	text-decoration: none !important;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
 	font-weight: 400 !important;
-	height: 20px;
-	font-size: 10px;
+	height: 35px;
+	font-size: 19px;
 	padding-top: 3px;
 }
+
+/*wishlist header css*/
 #listsubtitle {
 	margin-top: -18px;
 	font-size: 15px;
@@ -178,7 +182,7 @@ body {
 
 	/*placeholder text*/
 	::-webkit-input-placeholder {
-		font-size: 10px;
+		font-size: 15px;
 	   color: gray;
 	   text-shadow: none;
 	   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
