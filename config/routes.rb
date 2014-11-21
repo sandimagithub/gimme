@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'wishlists#new'
+  root 'session#login'
 
   resources :wishlists
   resources :items
