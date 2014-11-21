@@ -21,6 +21,10 @@ periwinkle: #BDC8E2*/
 	margin: 0 auto;
 }*/
 
+/* ------------------------------------------------- */
+/* Undoing jQuery Mobile CSS defaults  */
+/* removes shadows/outlines, adds helvetica neue */
+/* ------------------------------------------------- */
 body {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
 	outline: none !important;
@@ -62,7 +66,6 @@ body {
 		color: #28AAE0 !important;
 		text-decoration: none !important;
 	}
-	/*rid of all boarders/shadows*/
 
 
 /* ================== */
@@ -77,15 +80,13 @@ body {
 	padding: 2px;
 	overflow: hidden;
 }
-
 /*item title*/
 .itemlisttitle {
-	font-size: 24px;
+	font-size: 22px;
 	clear: both;
 	float: left;
 	width: 60%;
 }
-
 /*list icon*/
 .listpic {
 	float: right;
@@ -102,7 +103,6 @@ body {
 	height: 60px;
 	width: 60px;
 }
-
 /*list info*/
 .listinfo {
 	font-size: 14px;

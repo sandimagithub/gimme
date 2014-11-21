@@ -22,3 +22,14 @@ Gimme.addNewItem = function() {
 	$('#newcontainer').removeClass('hide');
 	$('#name').focus();
 };
+
+var open=false;
+Gimme.showMenu = function() {
+	if (!open) {
+		$('.menu').animate({'bottom': '0'}, 400);
+		open=true;
+	} else {
+		$('.menu').animate({'bottom': '-100%'}, 400);
+		open=false;
+	}
+};
