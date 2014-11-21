@@ -5,15 +5,17 @@
 		</div>
 		<img id="icon" class ="ui-btn-right" src="<%= @pic %>">
 </div>
-
+<div id="listsubtitle">
 wishlist type: <%= @wishlist.kind %><br>
-
 <% if @belongstouser %>
-	your list!
+	this is your list!
 <% else %>
 	by: <%= @wishlistowner.name %>
 <% end %>
+<p id="listdescrip"><%= @wishlist.description %></p>
+</div>
 
+<div id="spacer"></div>
 <!-- list of existing items -->
 <ul data-role="listview" class="items">
 </ul>
@@ -28,4 +30,12 @@ wishlist type: <%= @wishlist.kind %><br>
   Wishes.loadItems(<%= @wishlist.id %>);
 </script>
 
-<!-- AJAX for adding an item goes here -->
+<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="/wishlists" data-icon="bullets"> All Lists</a></li>
+        <li><a href="/wishlists/new" data-icon="plus">New List</a></li>
+        <li><a href="#" data-icon="star">More</a></li>
+      </ul>
+    </div>
+  </div>

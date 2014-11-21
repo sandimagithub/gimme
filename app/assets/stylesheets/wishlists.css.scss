@@ -11,6 +11,15 @@ periwinkle: #BDC8E2*/
 .hide {
 	display: none;
 }
+#spacer {
+	height: 20px;
+}
+
+/*set the body to a max width - currently excludes footers and headers*/
+/*#fix {
+	max-width: 500px;
+	margin: 0 auto;
+}*/
 
 body {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
@@ -47,7 +56,11 @@ body {
 	}
 	a {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
-	color: blue !important;
+	color: #81479B !important;
+	}
+	a:hover {
+		color: #28AAE0 !important;
+		text-decoration: none !important;
 	}
 	/*rid of all boarders/shadows*/
 
@@ -88,7 +101,6 @@ body {
 }
 /*class of ul*/
 .items {
-	padding-top: 30px;
 	border-top: 1px solid black;
 }
 
@@ -107,6 +119,15 @@ body {
 	height: 20px;
 	font-size: 10px;
 	padding-top: 3px;
+}
+#listsubtitle {
+	margin-top: -18px;
+	font-size: 15px;
+	color: #81479B;
+}
+#listdescrip {
+	font-size: 12px;
+	padding-top: 8px;
 }
 
 /* ================== */
