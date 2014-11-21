@@ -16,6 +16,6 @@ class ItemsController < ApplicationController
 	private
 
 	def get_item_params
-		params.require(:item).permit(:title, :wishlist_id, :img_url)
+		params.require(:item).permit(:title, :wishlist_id, :img_url, :description, :url)
 	end
 end

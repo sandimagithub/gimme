@@ -1,7 +1,53 @@
 
 <li class="listitem">
-	{{name}}
+	
+	<div class="listhead">
+		{{name}}
+		{{#if pic}}
+		<img class="listpic smlistpic ui-li-icon" src="{{pic}}">
+		{{/if}}
 
-	<img class="listpic ui-li-icon" src="{{pic}}">
+		<div class="hide listinfo">
+		{{#if description}}
+			{{description}}<br>
+		{{/if}}
+		{{#if url}}
+			<a href="{{url}}" target="_blank">view online</a>
+		{{/if}}
+		</div>
+	</div>
+	<!-- close listhead -->
 
 </li>
+
+<script>
+
+
+
+//ACCORDION FUNCTION
+$('.listitem').click(function() {
+
+	var dis = $(this).find('.listinfo');
+	var dispic = $(this).find('.listpic');
+//add hide class to all other descriptions
+
+	if (dis.hasClass('hide')) {
+
+		$('.listinfo').each(function() {
+			$(this).addClass('hide');
+		});
+		$('.listpic').each(function() {
+			$(this).addClass('smlistpic');
+		});
+		$('.listitem').each(function() {
+			$(this).css('height', '35px');
+		});
+
+		dispic.removeClass('smlistpic');
+		dispic.addClass('biglistpic');
+		dis.removeClass('hide');
+		$(this).css('height', '65px');
+	}
+
+});
+</script>

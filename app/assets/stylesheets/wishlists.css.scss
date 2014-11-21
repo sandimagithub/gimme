@@ -51,22 +51,37 @@ body {
 	}
 	/*rid of all boarders/shadows*/
 
-/*show wishlist page*/
+
+/* ================== */
+/* show wishlist page */
+/* ================== */
 /*list icon*/
-.listpic {
+.biglistpic {
 	height: 60px;
 	width: 60px;
+}
+.smlistpic {
+	height: 30px;
+	width: 30px;
+}
+.listpic {
 	float: right;
 	border: none;
+	overflow: hidden;
+	padding-top: 3px;
 }
 .ui-li-icon {
 }
+.listinfo {
+	font-size: 11px;
+}
 /*each li*/
 .listitem {
-	height: 65px;
+	height: 35px;
 	clear: both;
 	border-bottom: 1px solid black;
 	padding: 2px;
+	overflow: hidden;
 }
 #listitem:hover {
 	opacity: .5;
@@ -94,7 +109,9 @@ body {
 	padding-top: 3px;
 }
 
-/* new wishlist page*/
+/* ================== */
+/*  new wishlist page */
+/* ================== */
 .heading {
 	height: 70px;
 }

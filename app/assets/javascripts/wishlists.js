@@ -42,7 +42,6 @@ Wishes.addItem = function(item){
 	list.append(itemHTML);
 };
 
-
 Wishes.submitItem = function(itemId){
 	console.log(itemId);
 	console.log("you got inside of submitItem");
@@ -50,7 +49,7 @@ Wishes.submitItem = function(itemId){
 	var url = $("#url").val();
 	var pic = $("#pic").val();
 	var description = $("#description").val();
-	console.log(id,name,pic);
+	console.log(id,name,pic,description,url);
 		$.ajax({
 			method: "post",
 			url: "/items",
@@ -68,7 +67,9 @@ Wishes.submitItem = function(itemId){
 			},
 			success: function(){
 				console.log("success");
-				Wishes.addItem({title:name,img_url:pic});
+				console.log("description is "+description);
+				Wishes.addItem({title:name,img_url:pic,description:description,url:url});
+				console.log("done adding");
 			}
 		});
 	$("#name").val("");
@@ -77,11 +78,37 @@ Wishes.submitItem = function(itemId){
 	$("#url").val("");
 };
 
+$('#listhead').click(function() {
+		console.log("clicked");
+		$(this).find('#listinfo').removeClass('hide');
+	});
+
+// PSUEDOCODE FOR CLAIMING AN ITEM
+// need to get current user's id
+// ==================================
+// Wishes.claimItem = function(clickedLi, itemId, userId) {
+// 	if (isUnclaimed(clickedLi)) {
+// 		console.log("claiming list item "+clickedLi);
+// 		clickedLi.addClass('claimed');
+// 		var thisItem = Item.find_by_id(itemId);
+// 		thisItem.user_id = userId;
+// 	}
+// };
+
+// function isUnclaimed(clickedLi) {
+// 	for (var cls in clickedLi.classList) {
+// 		if (cls === "claimed") {
+// 			return false;
+// 		}
+// 	}
+// }
+
 function getListLength() {
 		var itemlist = document.getElementsByClassName('listitem');
 		console.log(itemlist.length);
 	}
  
+
 // // Delete a book
 // Wishes.deleteBook = function(id) {
 // 	console.log(id);
