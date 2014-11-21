@@ -70,27 +70,29 @@ body {
 /* ================== */
 /*list icon*/
 .biglistpic {
-	height: 60px;
-	width: 60px;
+	height: 110px;
+	width: 110px;
+	margin-top: 3px;
 }
 .smlistpic {
-	height: 30px;
-	width: 30px;
+	height: 60px;
+	width: 60px;
 }
 .listpic {
 	float: right;
 	border: none;
 	overflow: hidden;
-	padding-top: 3px;
+	padding-top: 2px;
 }
 .ui-li-icon {
 }
 .listinfo {
-	font-size: 11px;
+	font-size: 14px;
+	width: 250px;
 }
 /*each li*/
 .listitem {
-	height: 35px;
+	height: 65px;
 	clear: both;
 	border-bottom: 1px solid black;
 	padding: 2px;
@@ -98,6 +100,12 @@ body {
 }
 #listitem:hover {
 	opacity: .5;
+}
+/*item title*/
+#itemlistname {
+	font-size: 26px;
+	width: 250px;
+	float: left;
 }
 /*class of ul*/
 .items {

@@ -3,7 +3,9 @@
 <li class="listitem">
 	
 	<div class="listhead">
+		<div id="itemlistname">
 		{{name}}
+		</div>
 		{{#if pic}}
 		<img class="listpic smlistpic ui-li-icon" src="{{pic}}">
 		{{/if}}
@@ -45,13 +47,13 @@ $('.listitem').click(function() {
 			$(this).addClass('smlistpic');
 		});
 		$('.listitem').each(function() {
-			$(this).css('height', '35px');
+			$(this).css('height', '65px');
 		});
 
 		dispic.removeClass('smlistpic');
 		dispic.addClass('biglistpic');
 		dis.removeClass('hide');
-		$(this).css('height', '65px');
+		$(this).css('height', '120px');
 	}
 
 });
