@@ -25,8 +25,9 @@ Gimme.addNewItem = function() {
 
 var open=false;
 Gimme.showMenu = function() {
+	console.log(open);
 	if (!open) {
-		$('.menu').animate({'bottom': '0'}, 400);
+		$('.menu').animate({'bottom': '0%'}, 400);
 		open=true;
 	} else {
 		$('.menu').animate({'bottom': '-100%'}, 400);
