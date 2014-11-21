@@ -6,6 +6,8 @@ $(document).ready(function () {
 		$( "#datepicker" ).datepicker();
 	});
 
+
+
 	// $('#loginbutton').click(function() {
 	// var newWindow = window.open('', '_self', ''); //open the current window
  //    window.close(url);
@@ -19,10 +21,4 @@ Gimme.addNewItem = function() {
 	$('.firstwishbutton').addClass('hide');
 	$('#newcontainer').removeClass('hide');
 	$('#name').focus();
-};
-
-Gimme.submitItem = function() {
-	console.log('doin it again');
-	$('.firstwishbutton').removeClass('hide');
-	$('#newcontainer').addClass('hide');
 };
