@@ -8,6 +8,10 @@ yellow:  #FCDC55
 blue: #28AAE0
 periwinkle: #BDC8E2*/
 
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+	background-color: #BDC8E2;
+}
+
 .hide {
 	display: none;
 }
@@ -78,9 +82,11 @@ body {
 	height: 65px;
 	clear: both;
 	border-bottom: 1px solid black;
-	padding: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 	overflow: hidden;
 	text-shadow: none;
+	margin: 0;
 }
 /*item title*/
 .itemlisttitle {
