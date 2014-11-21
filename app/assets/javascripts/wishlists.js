@@ -43,6 +43,8 @@ Wishes.addItem = function(item){
 };
 
 Wishes.submitItem = function(itemId){
+	$('.firstwishbutton').removeClass('hide');
+	$('#newcontainer').addClass('hide');
 	console.log(itemId);
 	console.log("you got inside of submitItem");
 	var name = $("#name").val();
