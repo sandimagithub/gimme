@@ -19,6 +19,7 @@ periwinkle: #BDC8E2*/
 /*#fix {
 	max-width: 500px;
 	margin: 0 auto;
+	text-shadow: none !important;
 }*/
 
 /* ------------------------------------------------- */
@@ -29,7 +30,6 @@ body {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
 	outline: none !important;
 	box-shadow: none !important;
-	background-color: blue !important;
 }
 	div {
 		box-shadow: none !important;
@@ -61,7 +61,7 @@ body {
 	}
 	a {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
-	color: #81479B !important;
+	color: black !important;
 	}
 	a:hover {
 		color: #28AAE0 !important;
@@ -137,7 +137,6 @@ body {
 #listsubtitle {
 	margin-top: -18px;
 	font-size: 15px;
-	color: #81479B;
 }
 #listdescrip {
 	font-size: 12px;
