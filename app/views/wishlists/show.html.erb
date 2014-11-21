@@ -1,17 +1,22 @@
-Showing wishlist <%= @wishlist.id %>
 
-<br>
-WISHLIST TITLE: <%= @wishlist.title %><br>
-WISHLIST TYPE: <%= @wishlist.kind %><br>
+<div data-role="header collapsible" class="heading">
+		<div id="headtitle" class="ui-btn-left">
+		<%= @wishlist.title %>
+		</div>
+		<img id="icon" class ="ui-btn-right" src="<%= @pic %>">
+</div>
+
+wishlist type: <%= @wishlist.kind %><br>
+
 <% if @belongstouser %>
-	ITS YOURS!!!
+	your list!
 <% else %>
-	THIS IS NOT YOURS. IT BELONGS TO <%= @wishlistowner.name %>
+	by: <%= @wishlistowner.name %>
 <% end %>
 
-
-<div class="items">
-</div>
+<!-- list of existing items -->
+<ul data-role="listview" class="items">
+</ul>
 
 <!-- Add new item will not show if it's not the user's list -->
 <% if @belongstouser %>

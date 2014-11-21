@@ -1,21 +1,19 @@
 <div data-role="page">
 
-	<div data-role="header collapsible">
-		<img id="icon" src="<%= @pic %>">
+	<div data-role="header collapsible" class="heading">
+		<div id="headtitle" class="ui-btn-left">
+		new wishlist
+		</div>
+		<img id="icon" class ="ui-btn-right" src="<%= @pic %>">
 	</div>
 	<!-- closes header div -->
 
 <%= form_for @wishlist do |f| %>
-		<%= f.label :title %>
-	  	<%= f.text_field :title %>
+	  	<%= f.text_field :title, :class => 'newfield', :placeholder => "wishlist name" %>
 	  
-		<%= f.label :date %>
-		<%= f.text_field :date, id: "datepicker"%>
 
-		<%= f.label :description %>
-		<%= f.text_area :description %>
+		<%= f.text_area :description, :class => 'newfield', :placeholder => "add a description (optional)" %>
 
-		<%= f.label :type %>
 
 <!-- <fieldset data-role="controlgroup">
 	<input type="radio" id="christmas" name="kind" value="christmas"> 
@@ -26,27 +24,37 @@
 		<label for="other"> other</label><br>
 </fieldset> -->
 
-	<fieldset data-role="controlgroup">
-
-	  	<div class="radiofield">
-	  	<%= f.radio_button(:kind, "christmas", id: "radio-choice-1")%>
-	  	<div class="radiolabel"> Christmas </div>
-	  	</div>
-
-	  	<div class="radiofield">
-	  	<%= f.radio_button(:kind, "birthday", id: "radio-choice-2") %>
-	  	<div class="radiolabel"> Birthday </div>
-	  	</div>
-
-	  	<div class="radiofield">
-	  	<%= f.radio_button(:kind, "other", id: "radio-choice-3") %>
-	  	<div class="radiolabel"> Other </div>
-
+<div id="radiotitle">
+theme
 </div>
-	 </fieldset>
+	<fieldset data-role="controlgroup">
+	<div class="ui-grid-c">
+
+	<div class="radiofield ui-block-a">
+	</div>
+
+	  	<div class="radiofield ui-block-b">
+	  	<%= f.radio_button(:kind, "christmas", id: "radio-choice-1")%>
+	  	<div class="radiolabel"> christmas </div>
+	  	</div>
+
+	  	<div class="radiofield ui-block-c">
+	  	<%= f.radio_button(:kind, "birthday", id: "radio-choice-2") %>
+	  	<div class="radiolabel"> birthday </div>
+	  	</div>
+
+	  	<div class="radiofield ui-block-d">
+	  	<%= f.radio_button(:kind, "other", id: "radio-choice-3") %>
+	  	<div class="radiolabel"> other </div>
+		</div>
+	</div>
+	</fieldset>
 	<!-- closes controlgroup fieldset -->
+
+	<%= f.text_field :date, id: "datepicker", :class => 'newfield', :placeholder => "event date"%>
+
 	<button>
-	  <%= f.submit 'Generate', :class => 'submitbutton' %>
+	  <%= f.submit 'create & add items >', :class => 'submitbutton' %>
 	  </button>
 	<br>
 <% end %>
@@ -58,9 +66,9 @@
 <div data-role="footer" data-position="fixed" data-theme=>
     <div data-role="navbar">
       <ul>
-        <li><a href="/wishlists" data-icon="bullets"> Wish Lists</a></li>
-        <li><a href="/wishlists/new" data-icon="plus">New Wish List</a></li>
-        <li><a href="#" data-icon="plus">More Options</a></li>
+        <li><a href="/wishlists" data-icon="bullets"> All Lists</a></li>
+        <li><a href="/wishlists/new" data-icon="plus">New List</a></li>
+        <li><a href="#" data-icon="star">More</a></li>
       </ul>
     </div>
   </div>

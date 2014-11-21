@@ -19,6 +19,7 @@ Wishes.loadItems= function(wishlist_id){
 			success: function(items){
 				console.log("success");
 				items.forEach(function(item){Wishes.addItem(item);});
+				getListLength();
 			}
 		});
 	// items.forEach(function(){
@@ -37,7 +38,7 @@ Wishes.addItemSlot = function(){
 Wishes.addItem = function(item){
 	console.log(item);
 	var list = $(".items");
-	var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url});
+	var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url});
 	list.append(itemHTML);
 };
 
@@ -46,7 +47,9 @@ Wishes.submitItem = function(itemId){
 	console.log(itemId);
 	console.log("you got inside of submitItem");
 	var name = $("#name").val();
+	var url = $("#url").val();
 	var pic = $("#pic").val();
+	var description = $("#description").val();
 	console.log(id,name,pic);
 		$.ajax({
 			method: "post",
@@ -54,7 +57,9 @@ Wishes.submitItem = function(itemId){
 			data: {"item":
 				{ 
 					wishlist_id: id,  
-					title: name, 
+					title: name,
+					description: description,
+					url: url, 
 					img_url: pic
 				}
 			},
@@ -68,7 +73,14 @@ Wishes.submitItem = function(itemId){
 		});
 	$("#name").val("");
 	$("#pic").val("");
+	$("#description").val("");
+	$("#url").val("");
 };
+
+function getListLength() {
+		var itemlist = document.getElementsByClassName('listitem');
+		console.log(itemlist.length);
+	}
  
 // // Delete a book
 // Wishes.deleteBook = function(id) {
