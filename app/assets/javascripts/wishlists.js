@@ -23,7 +23,6 @@ Wishes.loadItems= function(wishlistId, userId){
 			},
 			error: function(){
 				console.log("load_items error");
-				debugger
 			},
 			success: function(items){
 				//if the ajax query succeds add each item to the page
@@ -182,12 +181,8 @@ $('#listhead').click(function() {
 
 function getListLength() {
 		var itemlist = document.getElementsByClassName('listitem');
-<<<<<<< HEAD
 		console.log("list length is ",itemlist.length);
-=======
-		console.log(itemlist.length);
 		return itemlist.length;
->>>>>>> 0418698aa7eee07a5a5653282a38e52c61ffdc91
 	}
 
 function addColors() {
