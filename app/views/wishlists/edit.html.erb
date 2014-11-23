@@ -1,0 +1,55 @@
+<div data-role="page">
+
+  <div data-role="header collapsible" class="heading">
+    <div id="headtitle" class="ui-btn-left">
+   Editing your wishlist
+    </div>
+    <img id="icon" class ="ui-btn-right" src="<%= @pic %>">
+  </div>
+  <!-- closes header div -->
+
+<%= form_for @wishlist, method: "PUT"  do |f| %>
+      <%= f.text_field :title, :class => 'newfield', :placeholder => "wishlist name" %>
+    
+
+    <%= f.text_area :description, :class => 'newfield', :placeholder => "add a description (optional)" %>
+
+<div id="radiotitle">
+theme
+</div>
+  <fieldset data-role="controlgroup">
+  <div class="ui-grid-c">
+
+  <div class="radiofield ui-block-a">
+  </div>
+
+      <div class="radiofield ui-block-b">
+      <%= f.radio_button(:kind, "christmas", id: "radio-choice-1")%>
+      <div class="radiolabel"> christmas </div>
+      </div>
+
+      <div class="radiofield ui-block-c">
+      <%= f.radio_button(:kind, "birthday", id: "radio-choice-2") %>
+      <div class="radiolabel"> birthday </div>
+      </div>
+
+      <div class="radiofield ui-block-d">
+      <%= f.radio_button(:kind, "other", id: "radio-choice-3") %>
+      <div class="radiolabel"> other </div>
+    </div>
+  </div>
+  </fieldset>
+  <!-- closes controlgroup fieldset -->
+
+  <%= f.text_field :date, id: "datepicker", :class => 'newfield', :placeholder => "event date"%>
+
+  <button>
+    <%= f.submit 'Submit Edited Wishlist', :class => 'submitbutton' %>
+    </button>
+  <br>
+<% end %>
+<!-- closes form -->
+
+
+</div>
+<!-- closes data-role div -->
