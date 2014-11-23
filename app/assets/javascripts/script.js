@@ -16,6 +16,13 @@ $(document).ready(function () {
 });
 // close document ready
 
+
+
+
+
+//when you click the add item button this function opens up the form, 
+//hides the button and shows a button that will submit the form
+
 // Called when '+new item' is pressed
 Gimme.addNewItem = function() {
 	console.log('doin it');

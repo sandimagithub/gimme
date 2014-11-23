@@ -40,6 +40,7 @@ class WishlistsController < ApplicationController
 				@belongstouser = true
 			else
 				@wishlistowner = User.find(@wishlist.user_id)
+				@user_id = session[:user_id]
 			end
 		end
 	end

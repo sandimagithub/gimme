@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 
+
   def signup
     if (session[:user_id] != nil) 
       redirect_to new_wishlist_path
@@ -8,8 +9,14 @@ class SessionsController < ApplicationController
   end
 
   def login
+
   end
   
+  def find_user
+    user = User.find(params[:user_id])
+    render json: user
+  end
+
   def create
   	auth = env['omniauth.auth']
     user = User.omniauth(auth)

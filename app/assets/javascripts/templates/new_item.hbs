@@ -1,6 +1,13 @@
 
+
 <!-- Entire list item. Has the click listener. Id = the id of the item. -->
-<li class="listitem" id="{{id}}">
+<!-- if the item has been claimed give it the class claimed -->
+{{#if claimName}}
+<li class="listitem claimed" id="{{itemId}}">
+{{else}}
+<li class="listitem" id="{{itemId}}">
+{{/if}}
+
 
 	<!-- Wrapper for all of the list item's things (title, img, descrip, link) -->
 	<div class="listcontents">
@@ -16,14 +23,28 @@
 
 	<!-- Wrapper for additional item info, shown onclick-->
 		<div class="hide listinfo">
-			{{#if description}}
-				{{description}}<br>
+
+		{{#if description}}
+			{{description}}<br>
+		{{else}}
+			nothing to see here!<br>
+		{{/if}}
+
+		{{#if url}}
+			<a href="{{url}}" target="_blank">view online</a>
+		{{/if}}
+
+
+<!-- if the item has been claimed display the name of the user who claimed it -->
+		{{#if userId}}
+			{{#if claimName}}
+				claimed by {{claimName}}
 			{{else}}
-				nothing to see here!<br>
+				<button onclick="Wishes.claim({{itemId}}, {{userId}})">Claim</button>
 			{{/if}}
-			{{#if url}}
-				<a href="{{url}}" target="_blank">view online</a>
-			{{/if}}
+		{{/if}}
+
+
 		</div>
 		<!-- closes additional info div -->
 	</div>
@@ -61,8 +82,5 @@ $('.listitem').click(function() {
 	}
 
 });
-
-
-
 
 </script>
