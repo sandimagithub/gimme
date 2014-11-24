@@ -44,12 +44,12 @@
 				<button class="detailsbutton hide" id="unclaim{{itemId}}" onclick="Wishes.unclaim({{itemId}})">Unclaim</button>
 			{{/if}}
 		{{else}}
-				<button class="detailsbutton" onclick="Wishes.editForm({{itemId}})">Edit</button>
-				<button class="detailsbutton" onclick="Wishes.delete({{itemId}})">Delete</button>
+				<button class="detailsbutton" id = "editbutton" onclick="Wishes.editForm({{itemId}})">edit</button>
+				<button class="detailsbutton" onclick="Wishes.delete({{itemId}})">delete</button>
 		{{/if}}
 		{{#if unclaim}}
-			<button class="detailsbutton" id="unclaim{{itemId}}" onclick="Wishes.unclaim({{itemId}})">Unclaim</button>
-			<button class="detailsbutton hide" id="claim{{itemId}}" onclick="Wishes.claim({{itemId}}, {{userId}})">Claim</button>
+			<button class="detailsbutton" id="unclaim{{itemId}}" onclick="Wishes.unclaim({{itemId}})">unclaim</button>
+			<button class="detailsbutton hide" id="claim{{itemId}}" onclick="Wishes.claim({{itemId}}, {{userId}})">claim</button>
 		{{/if}}
 
 		</div>
