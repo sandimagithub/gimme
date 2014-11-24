@@ -43,10 +43,10 @@
 				<button onclick="Wishes.claim({{itemId}}, {{userId}})">Claim</button>
 			{{/if}}
 		{{else}}
-				<button onclick="Wishes.delete({{itemId}})">Delete</button>
+				<button class="" onclick="Wishes.delete({{itemId}})">Delete</button>
 		{{/if}}
 		{{#if unclaim}}
-			<button onclick="Wishes.unclaim({{itemId}})">Unclaim</button>
+			<button class="" onclick="Wishes.unclaim({{itemId}})">Unclaim</button>
 		{{/if}}
 
 		</div>

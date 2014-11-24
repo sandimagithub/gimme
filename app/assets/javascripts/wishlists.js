@@ -264,8 +264,7 @@ Wishes.loadUsersItems = function(userId){
 				//if the ajax query succeds add each item to the page
 				console.log("load items success");
 				items.forEach(function(item){Wishes.addItem(item);});
-				getListLength();
-				addColors();
+				addColors("#324D5B", "#AFBEC0");
 			}
 		});
 };
