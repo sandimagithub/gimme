@@ -8,8 +8,12 @@ yellow:  #FCDC55
 blue: #28AAE0
 periwinkle: #BDC8E2*/
 
+
+
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
-	background-color: #BDC8E2;
+	background-color: #324D5B;
+	color: white;
+	text-shadow: none;
 }
 
 .hide {
@@ -46,10 +50,15 @@ body {
 	textarea {
 		box-shadow: none !important;
 		border: none !important;
+		font-color: #FEFEFE !important;
+		border-radius: 0px !important;
 	}
 	.ui-input-text {
 		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 		font-weight: 300 !important;
+		color: #324D5B !important;
+		text-shadow: none !important;
+		font-size: 15px !important;
 	}
 	button {
 		box-shadow: none !important;
@@ -58,18 +67,31 @@ body {
 	textarea {
 		box-shadow: none !important;
 		border: none !important;
+		background-color: white !important;
 	}
 	input {
 		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
 		text-decoration: none;
+		background-color: white !important;
+		border-radius: 0px !important;
 	}
 	a {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
-	color: black !important;
+	text-shadow: none !important;
 	}
 	a:hover {
 		color: #28AAE0 !important;
 		text-decoration: none !important;
+	}
+
+	#select-7-button, .ui-btn, .ui-btn a {
+		background-color: #AFBEC0 !important;
+		color: #324D5B !important;
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+		font-weight: 300 !important;
+		text-shadow: none;
+		border-radius: 0px !important;
+		border: none !important;
 	}
 
 
@@ -164,53 +186,46 @@ body {
 	}
 	.submitbutton {
 		border: none;
-		background-color: rgba(0, 0, 0, 0);
+		background-color: rgba(0, 0, 0, 0) !important;
 		text-decoration: none !important;
 		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
 		font-weight: 400 !important;
 	}
-	/*radio button section*/
-	.ui-grid-c {
-		padding-top: 10px;
-		padding-bottom: 5px;
-	}
-	.radiofield {
-		
-	}
-	.radiolabel {
-		font-size: .6em;
-		margin-left: 30px;
-		margin-top: -7px;
-		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-	}
-	#radiotitle {
-		float: left;
-		margin-left: 5px;
-		color: gray;
-	}
-	/*end*/
+
+#choosetheme {
+	padding: 0 !important;
+}
+#choosetheme .ui-btn {
+	background: white !important;
+	color: #33A5B3 !important;
+	height: 35px;
+}
 
 	/*placeholder text*/
 	::-webkit-input-placeholder {
+		color: #33A5B3 !important;
+		font-weight: 300 !important;
 		font-size: 15px;
-	   color: gray;
 	   text-shadow: none;
 	   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	}
 		:-moz-placeholder { /* Firefox 18- */
-		   color: gray;
+		   color: #33A5B3 !important;
+			font-size: 15px;
 		   text-shadow: none;
 		   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;  
 		}
 
 		::-moz-placeholder {  /* Firefox 19+ */
-		   color: gray;
+		   color: #33A5B3 !important;
+			font-size: 15px;
 		   text-shadow: none;
 		   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;  
 		}
 
 		:-ms-input-placeholder {  
-		   color: gray;
+		   color: #33A5B3 !important;
+			font-size: 15px;
 		   text-shadow: none;
 		   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 		}
@@ -222,17 +237,32 @@ body {
 	}
 
 /* ================== */
-/*  wishlists/index   */
+/*  wishlists index   */
 /* ================== */
 
-.deletebutton {
-	background-color: white;
-	opacity: .7;
-	border: none;
+.listbutton {
+	background-color: rgba(255, 255, 255, .3) !important;
+	border: none !important;
 	font-size: 10px;
-	margin-top: -5px;
+	margin: 0;
+	margin-top: -1px;
+}
+.wishlistslist {
+	width: 100% !important;
+	margin: 0;
+}
+.listbutton a {
+	color: white !important;
+	background-color: rgba(0, 0, 0, 0) !important;
+}
+#deletebutton {
+	border: none !important;
+	background-color: rgba(0, 0, 0, 0) !important;
+	padding: 0 !important;
+}
+.titlebutton {
+/*	color: white !important;*/
 }
 .indexlink {
 	margin-bottom: 0px;
 }
-

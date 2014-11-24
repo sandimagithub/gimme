@@ -18,13 +18,14 @@ class WishlistsController < ApplicationController
 		if (session[:user_id] == nil)
 			redirect_to signup_path
 		else
-			@wishlist = Wishlist.new(get_wishlist_params)
+			wish_params = wishlist_params.merge(user_id: session[:user_id])
+
+			@wishlist = Wishlist.new(wish_params)
 			if @wishlist.save
-				redirect_to @wishlist
+				redirect_to wishlist_path(@wishlist.id)
 				@wishlist.user = User.find(session[:user_id])
-				@wishlist.save
 			else
-				redirect_to Wishlist
+				redirect_to wishlists_path
 			end
 		end
 	end
@@ -46,6 +47,16 @@ class WishlistsController < ApplicationController
 		end
 	end
 
+	def edit
+		@wishlist = Wishlist.find(params[:id]) 
+	end
+
+def update
+	wishlist = Wishlist.find(params[:id])
+	wishlist.update(wishlist_params)
+	redirect_to wishlists_path
+	end
+
 def destroy
 	wishlist = Wishlist.find(params[:id])
 	wishlist.destroy
@@ -54,7 +65,8 @@ end
 
 	private
 
-	def get_wishlist_params
+	def wishlist_params
 		params.require(:wishlist).permit(:title, :date, :description, :kind)
 	end
+	
 end

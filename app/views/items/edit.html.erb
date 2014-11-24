@@ -1,17 +1,17 @@
 <div data-role="page">
 <div data-role="header collapsible" class="heading">
-		<div id="headtitle" class="ui-btn-left">
-		<%= @wishlist.title %>
-		</div>
-		<img id="icon" class ="ui-btn-right" src="<%= @pic %>">
+    <div id="headtitle" class="ui-btn-left">
+    <%= @wishlist.title %>
+    </div>
+    <img id="icon" class ="ui-btn-right" src="<%= @pic %>">
 </div>
 
 <div id="listsubtitle">
 wishlist type: <%= @wishlist.kind %><br>
 <% if @belongstouser %>
-	this is your list!
+  this is your list!
 <% else %>
-	by: <%= @wishlistowner.name %>
+  by: <%= @wishlistowner.name %>
 <% end %>
 <p id="listdescrip"><%= @wishlist.description %></p>
 </div>
@@ -27,16 +27,15 @@ wishlist type: <%= @wishlist.kind %><br>
 </div>
 <% end %>
 
-<% p "**********hi**********" %>
-<% if @nn_user_id %>
-<% p "**********hello**********" %>
-<!-- if the user doesn't own the list then @nn_user_id will exsist in that case we want to call Wishes.loadItems(wich initializes the page) with the nn_user_id so we can have claim buttons -->
+
+<% if @user_id %>
+<!-- if the user doesn't own the list then @user_id will exsist in that case we want to call Wishes.loadItems(wich initializes the page) with the user_id so we can have claim buttons -->
 <script type="text/javascript">
-  Wishes.loadItems(<%= @wishlist.id %>, <%= @nn_user_id %>);
+  Wishes.loadItems(<%= @wishlist.id %>, <%= @user_id %>);
 </script>
 
 <% else %>
-<% p "**********hello**********" %>
+
 <script type="text/javascript">
   Wishes.loadItems(<%= @wishlist.id %>);
 </script>
@@ -47,13 +46,10 @@ wishlist type: <%= @wishlist.kind %><br>
   <div id="spacer"></div>
 <% end %>
 
-
-
-
 <!-- slide menu panel -->
 <div class="menu" id="menu">
 <ul>
-  <li><%= link_to "View claimed items", claimed_items_path(@user_id) %></li>
+  <li><a href="#">View claimed items</a></li>
   <li><%= link_to "Log out", logout_path %></li>
 </ul>
 </div>
