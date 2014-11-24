@@ -56,7 +56,7 @@ def update
 	wishlist = Wishlist.find(params[:id])
 	wishlist.update(wishlist_params)
 	redirect_to wishlists_path
-	end
+end
 
 def destroy
 	wishlist = Wishlist.find(params[:id])

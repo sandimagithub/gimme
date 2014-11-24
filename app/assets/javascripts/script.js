@@ -34,8 +34,3 @@ Gimme.showMenu = function() {
 		$('.morebutton').removeClass('ui-btn-active');
 	}
 };
-
-
-
-
-

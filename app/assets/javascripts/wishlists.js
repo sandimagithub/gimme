@@ -59,7 +59,6 @@ Wishes.addItemSlot = function(){
 };
 
 
-
 Wishes.addItem = function(item, page){
 	console.log("item is ",item);
 	var claimName = "123";
@@ -104,7 +103,6 @@ Wishes.getClaimName = function(user_id, callback){
 			}
 		});
 };
-
 
 
 Wishes.submitItem = function(itemId){
@@ -166,6 +164,8 @@ $('#listhead').click(function() {
 	Wishes.claim = function(itemId, userId){
 		var clickedLi = $("#"+itemId).first();
 		var classes = clickedLi.attr('class').split(" ");
+		$("#claim"+itemId).addClass('hide');
+		$("#unclaim"+itemId).removeClass('hide');
 		if(classes.indexOf("claimed") === -1){
 			console.log("claiming list item ",clickedLi);
 			clickedLi.addClass("claimed");
@@ -189,8 +189,6 @@ $('#listhead').click(function() {
 			console.log("already claimed");
 		}
 	};
-
-
 
 Wishes.delete = function(itemId){
 	var item = $("#"+itemId);
@@ -254,12 +252,6 @@ function shadeBlend(p,c0,c1) {
     }
 }
 
-
-
-
-
-
-
 Wishes.loadUsersItems = function(userId){
 	window.userId = userId;
 		$.ajax({
@@ -272,13 +264,19 @@ Wishes.loadUsersItems = function(userId){
 			success: function(items){
 				//if the ajax query succeds add each item to the page
 				console.log("load items success");
-				items.forEach(function(item){Wishes.addItem(item);});
-				addColors("#324D5B", "#AFBEC0");
+				items.forEach(function(item){Wishes.addItem(item,"my items");});
+				getListLength();
+				addColors();
 			}
 		});
 };
 
 
+Wishes.editForm = function(itemId){
+	var item = $("#"+itemId);
+	var form = formHTML = HandlebarsTemplates["new_form"];
+	item.html(form);
+};
 
 
 
@@ -289,6 +287,9 @@ Wishes.unclaim = function(itemId, page){
 		item.remove();
 	}else{
 		item.removeClass("claimed");
+		$("#claim"+itemId).removeClass('hide');
+		$("#unclaim"+itemId).addClass('hide');
+		console.log($("#claim"+itemId));
 	}
 	$.ajax({
 		method: "delete",
@@ -306,18 +307,4 @@ Wishes.unclaim = function(itemId, page){
 		}
 	});	
 };
-
-
-// // Delete a book
-// Wishes.deleteBook = function(id) {
-// 	console.log(id);
-// 	$.ajax({
-// 	    url: "/books/"+id,
-// 	    type: 'DELETE',
-// 	    success: function(result) {
-// 	    	$("."+id).remove();
-// 	    }
-// 	});
-// };
-
 
