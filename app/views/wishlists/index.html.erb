@@ -6,7 +6,6 @@
 
 
 <% @wishlists.each do |wish| %>
-
 <div class='wishlistslist' data-role="content">
   <ul data-role="listview">
     <li><a href="<%= wishlist_path(wish.id)%>" class="titlebutton"> <%= wish.title %> </a></li>
@@ -14,17 +13,20 @@
 <!--     <button class="listbutton"><a href="<%= wishlist_path(wish.id)%>">view</a></button> -->
 
     <!-- need to render these buttons ONLY if wishlist=userid -->
+    <%if wish.user.id == @user_id%>
       <button class="listbutton"><a href="<%= edit_wishlist_path(wish.id)%>">edit</a></button>
       <button class="listbutton">
       <%= form_for wish, method: "DELETE"  do |f| %>
       <%= submit_tag("delete", :id => 'deletebutton') %>
       <% end %>
       </button>
+    <% end %>
     <!-- end -->
   </ul>
 </div>
 
 <br>
+
 <% end %>
 
 <!-- slide menu panel -->
