@@ -15,6 +15,13 @@ class ItemsController < ApplicationController
 		render json: item
 	end
 
+	def unclaim
+		item = Item.find(params[:item][:item_id])
+		item.user = nil
+		item.save
+		render json: item
+	end
+
 	def index
 		@items = Wishlist.find(params[:item][:wishlist_id]).items
     render json: @items
@@ -23,6 +30,15 @@ class ItemsController < ApplicationController
 	def destroy
 		Item.destroy(params[:id])
 		render json: "destroyed"
+	end
+
+	def user
+		@user = User.find(params[:id])
+	end
+
+	def userjson
+		@items = User.find(params[:id]).items
+		render json: @items
 	end
 
 	private

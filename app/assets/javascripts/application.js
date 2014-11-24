@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require handlebars.runtime
-//= require turbolinks
+
 //= require_tree ./templates
 //= require_tree ../../../vendor/assets/javascripts
 //= require_tree .
+
+$.mobile.page.prototype.options.domCache = false;

@@ -45,7 +45,9 @@
 		{{else}}
 				<button onclick="Wishes.delete({{itemId}})">Delete</button>
 		{{/if}}
-
+		{{#if unclaim}}
+			<button onclick="Wishes.unclaim({{itemId}})">Unclaim</button>
+		{{/if}}
 
 		</div>
 		<!-- closes additional info div -->
