@@ -18,13 +18,14 @@ class WishlistsController < ApplicationController
 		if (session[:user_id] == nil)
 			redirect_to signup_path
 		else
-			@wishlist = Wishlist.new(wishlist_params)
+			wish_params = wishlist_params.merge(user_id: session[:user_id])
+
+			@wishlist = Wishlist.new(wish_params)
 			if @wishlist.save
-				redirect_to @wishlist
+				redirect_to wishlist_path(@wishlist.id)
 				@wishlist.user = User.find(session[:user_id])
-				@wishlist.save
 			else
-				redirect_to Wishlist
+				redirect_to wishlists_path
 			end
 		end
 	end
@@ -39,7 +40,7 @@ class WishlistsController < ApplicationController
 			if session[:user_id] == @wishlist.user_id
 				@belongstouser = true
 			else
-				@wishlistowner = User.find(@wishlist.user_id)
+				@wishlistowner = User.find(session[:user_id])
 				@user_id = session[:user_id]
 			end
 		end
