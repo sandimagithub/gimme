@@ -50,7 +50,7 @@ Wishes.addItemSlot = function(){
 Wishes.addItem = function(item){
 	console.log("item is ",item);
 	var claimName = "123";
-	if(item.user_id){
+	if(item.user_id && userId){
 		Wishes.getClaimName(item.user_id, function(claimName){
 			console.log("claimName is",claimName);
 			var list = $(".items");
