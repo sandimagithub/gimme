@@ -4,8 +4,10 @@
 // Namespace
 var Wishes = {};
 
+
 Wishes.loadItems= function(wishlistId, userId){
 	window.wishlistId = wishlistId;
+	//userId is only passed in if the user isn't the owner
 	window.userId = userId;
 	//this allows us to acces the id's of the wishlist and the logged in user
 	// anywhere in our javascript
@@ -28,8 +30,10 @@ Wishes.loadItems= function(wishlistId, userId){
 				//if the ajax query succeds add each item to the page
 				console.log("load items success");
 				items.forEach(function(item){Wishes.addItem(item);});
-				getListLength();
-				addColors();
+
+//===   change the color gradient here   ====
+//=======  must be in hexcode form  =======
+				addColors("#324D5B", "#AFBEC0");
 			}
 		});
 
@@ -50,11 +54,23 @@ Wishes.addItemSlot = function(){
 Wishes.addItem = function(item){
 	console.log("item is ",item);
 	var claimName = "123";
+	//because userId is only passed in if the user isn't the owner, 
+	//if userId is around that means we want to see claimed items
+	//and we only want to get the name of the person who claimed it if the item has 
+	//been claimed if item doesn't have a user ID we can give it defualt formating
 	if(item.user_id && userId){
-		Wishes.getClaimName(item.user_id, function(claimName){
+		Wishes.getClaimName(item.user_id, function(user){
+			claimName = user.name;
 			console.log("claimName is",claimName);
+			if(item.user_id === user.id){
+				//unclaimable
+				var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url, userId:userId, itemId: item.id, claimName:claimName, unclaim:true});
+			}else{
+				//someone else claimed it
+				var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url, userId:userId, itemId: item.id, claimName:claimName});
+			}
 			var list = $(".items");
-			var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url, userId:userId, itemId: item.id, claimName:claimName});
+			
 			list.append(itemHTML);
 		});
 	}else{
@@ -75,7 +91,7 @@ Wishes.getClaimName = function(user_id, callback){
 				console.log("find user error");
 			},
 			success: function(user){
-				callback(user.name);
+				callback(user);
 			}
 		});
 };
@@ -191,29 +207,30 @@ Wishes.delete = function(itemId){
 // 	}
 // }
 
-function getListLength() {
-		var itemlist = document.getElementsByClassName('listitem');
-		console.log("list length is ",itemlist.length);
-		return itemlist.length;
-	}
-
-function addColors() {
+function addColors(color, color2) {
 	var litems = document.getElementsByClassName('listitem');
-	//first color
-	var color = "#BDC8E2";
-	//second color
-	var color2 = "#FCDC55";
 	var color3 = color;
+	var gradient = setGradient(litems.length);
 	document.getElementById('fix').style.backgroundColor = color;
-	console.log(litems);
-	console.log(litems.length);
-
+	console.log("beginning gradient effect");
+	console.log(gradient);
 	for (var i=0; i<litems.length; i++) {
-		color3 = shadeBlend(0.06, color, color2);
+		color3 = shadeBlend(gradient, color, color2);
 		color = color3;
-		console.log("inloop");
 		console.log(color);
 		litems[i].style.backgroundColor = (color3);
+	}
+}
+
+function setGradient(length) {
+	if (length < 3) {
+		return 0.5;
+	} else if (length < 9) {
+		return 0.2;
+	} else if (length < 14) {
+		return 0.09;
+	} else {
+		return 0.07;
 	}
 }
 
@@ -227,6 +244,59 @@ function shadeBlend(p,c0,c1) {
         return "#"+(0x1000000+(u(((t>>16)-R1)*n)+R1)*0x10000+(u(((t>>8&0x00FF)-G1)*n)+G1)*0x100+(u(((t&0x0000FF)-B1)*n)+B1)).toString(16).slice(1)
     }
 }
+
+
+
+
+
+
+
+Wishes.loadUsersItems = function(userId){
+	window.userId = userId;
+		$.ajax({
+			url: "/user/"+userId+"/json",
+			data: {"id": userId
+			},
+			error: function(){
+				console.log("load_items error");
+			},
+			success: function(items){
+				//if the ajax query succeds add each item to the page
+				console.log("load items success");
+				items.forEach(function(item){Wishes.addItem(item);});
+				getListLength();
+				addColors();
+			}
+		});
+};
+
+
+
+
+
+Wishes.unclaim = function(itemId, page){
+		var item = $("#"+itemId);
+	if(page === "my items"){
+		item.remove();
+	}else{
+		item.removeClass("claimed");
+	}
+	$.ajax({
+		method: "delete",
+		url: "/items/claim",
+		data: {"item":
+			{ 
+				item_id: itemId,
+			}
+		},
+		error: function(){
+			console.log("unclaim error");
+		},
+		success: function(){
+			console.log("unclaim success");
+		}
+	});	
+};
 
 
 // // Delete a book
