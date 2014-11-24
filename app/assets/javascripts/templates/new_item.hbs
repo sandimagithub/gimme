@@ -40,13 +40,15 @@
 			{{#if claimName}}
 				claimed by {{claimName}}
 			{{else}}
-				<button class="detailsbutton" onclick="Wishes.claim({{itemId}}, {{userId}})">Claim</button>
+				<button class="detailsbutton" id="claim{{itemId}}" onclick="Wishes.claim({{itemId}}, {{userId}})">Claim</button>
+				<button class="detailsbutton hide" id="unclaim{{itemId}}" onclick="Wishes.unclaim({{itemId}})">Unclaim</button>
 			{{/if}}
 		{{else}}
 				<button class="detailsbutton" onclick="Wishes.delete({{itemId}})">Delete</button>
 		{{/if}}
 		{{#if unclaim}}
-			<button class="detailsbutton" onclick="Wishes.unclaim({{itemId}})">Unclaim</button>
+			<button class="detailsbutton" id="unclaim{{itemId}}" onclick="Wishes.unclaim({{itemId}})">Unclaim</button>
+			<button class="detailsbutton hide" id="claim{{itemId}}" onclick="Wishes.claim({{itemId}}, {{userId}})">Claim</button>
 		{{/if}}
 
 		</div>
