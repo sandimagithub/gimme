@@ -274,7 +274,7 @@ Wishes.loadUsersItems = function(userId){
 
 Wishes.editForm = function(itemId){
 	var item = $("#"+itemId);
-	var form = formHTML = HandlebarsTemplates["new_form"];
+	var form = formHTML = HandlebarsTemplates["new_form"]({edit:true});
 	item.html(form);
 };
 
