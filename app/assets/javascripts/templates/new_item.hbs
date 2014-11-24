@@ -55,31 +55,3 @@
 	<!-- close listhead -->
 </li>
 <!-- close entire list item -->
-
-<script>
-
-
-
-$('.listitem').click(function() {
-	var dis = $(this).find('.listinfo');
-	var dispic = $(this).find('.listpic');
-//add hide class to all other descriptions
-	if (dis.hasClass('hide')) {
-		$('.listinfo').each(function() {
-			$(this).addClass('hide');
-		});
-		$('.listpic').each(function() {
-			$(this).addClass('smlistpic');
-		});
-		$('.listitem').each(function() {
-			$(this).css('height', '65px');
-		});
-		dispic.removeClass('smlistpic');
-		dispic.addClass('biglistpic');
-		dis.removeClass('hide');
-		$(this).css('height', '160px');
-	}
-});
-
-
-</script>
