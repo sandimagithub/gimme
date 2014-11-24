@@ -164,6 +164,8 @@ $('#listhead').click(function() {
 	Wishes.claim = function(itemId, userId){
 		var clickedLi = $("#"+itemId).first();
 		var classes = clickedLi.attr('class').split(" ");
+		$("#claim"+itemId).addClass('hide');
+		$("#unclaim"+itemId).removeClass('hide');
 		if(classes.indexOf("claimed") === -1){
 			console.log("claiming list item ",clickedLi);
 			clickedLi.addClass("claimed");
@@ -262,11 +264,21 @@ Wishes.loadUsersItems = function(userId){
 			success: function(items){
 				//if the ajax query succeds add each item to the page
 				console.log("load items success");
-				items.forEach(function(item){Wishes.addItem(item);});
-				addColors("#324D5B", "#AFBEC0");
+				items.forEach(function(item){Wishes.addItem(item,"my items");});
+				getListLength();
+				addColors();
 			}
 		});
 };
+
+
+Wishes.editForm = function(itemId){
+	var item = $("#"+itemId);
+	var form = formHTML = HandlebarsTemplates["new_form"];
+	item.html(form);
+};
+
+
 
 Wishes.unclaim = function(itemId, page){
 	console.log(itemId,page);
@@ -275,6 +287,9 @@ Wishes.unclaim = function(itemId, page){
 		item.remove();
 	}else{
 		item.removeClass("claimed");
+		$("#claim"+itemId).removeClass('hide');
+		$("#unclaim"+itemId).addClass('hide');
+		console.log($("#claim"+itemId));
 	}
 	$.ajax({
 		method: "delete",
