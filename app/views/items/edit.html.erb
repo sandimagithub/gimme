@@ -1,17 +1,17 @@
 <div data-role="page">
 <div data-role="header collapsible" class="heading">
-		<div id="headtitle" class="ui-btn-left">
-		<%= @wishlist.title %>
-		</div>
-		<img id="icon" class ="ui-btn-right" src="<%= @pic %>">
+    <div id="headtitle" class="ui-btn-left">
+    <%= @wishlist.title %>
+    </div>
+    <img id="icon" class ="ui-btn-right" src="<%= @pic %>">
 </div>
 
 <div id="listsubtitle">
 wishlist type: <%= @wishlist.kind %><br>
 <% if @belongstouser %>
-	this is your list!
+  this is your list!
 <% else %>
-	by: <%= @wishlistowner.name %>
+  by: <%= @wishlistowner.name %>
 <% end %>
 <p id="listdescrip"><%= @wishlist.description %></p>
 </div>

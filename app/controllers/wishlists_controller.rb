@@ -18,7 +18,7 @@ class WishlistsController < ApplicationController
 		if (session[:user_id] == nil)
 			redirect_to signup_path
 		else
-			@wishlist = Wishlist.new(get_wishlist_params)
+			@wishlist = Wishlist.new(wishlist_params)
 			if @wishlist.save
 				redirect_to @wishlist
 				@wishlist.user = User.find(session[:user_id])
@@ -45,6 +45,16 @@ class WishlistsController < ApplicationController
 		end
 	end
 
+	def edit
+		@wishlist = Wishlist.find(params[:id]) 
+	end
+
+def update
+	wishlist = Wishlist.find(params[:id])
+	wishlist.update(wishlist_params)
+	redirect_to wishlists_path
+	end
+
 def destroy
 	wishlist = Wishlist.find(params[:id])
 	wishlist.destroy
@@ -53,7 +63,8 @@ end
 
 	private
 
-	def get_wishlist_params
+	def wishlist_params
 		params.require(:wishlist).permit(:title, :date, :description, :kind)
 	end
+	
 end
