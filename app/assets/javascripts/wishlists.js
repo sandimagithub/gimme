@@ -2,6 +2,15 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 // Namespace
+
+//Disable AJAX page fetching
+
+$(document).ready(function() {
+	$.mobile.ajaxEnabled = false;
+});
+
+//Wishlist code below
+
 var Wishes = {};
 
 
