@@ -40,13 +40,13 @@
 			{{#if claimName}}
 				claimed by {{claimName}}
 			{{else}}
-				<button onclick="Wishes.claim({{itemId}}, {{userId}})">Claim</button>
+				<button class="detailsbutton" onclick="Wishes.claim({{itemId}}, {{userId}})">Claim</button>
 			{{/if}}
 		{{else}}
-				<button onclick="Wishes.delete({{itemId}})">Delete</button>
+				<button class="detailsbutton" onclick="Wishes.delete({{itemId}})">Delete</button>
 		{{/if}}
 		{{#if unclaim}}
-			<button onclick="Wishes.unclaim({{itemId}},'{{page}}')">Unclaim</button>
+			<button class="detailsbutton" onclick="Wishes.unclaim({{itemId}})">Unclaim</button>
 		{{/if}}
 
 		</div>
@@ -60,15 +60,11 @@
 
 
 
-//ACCORDION FUNCTION
 $('.listitem').click(function() {
-
 	var dis = $(this).find('.listinfo');
 	var dispic = $(this).find('.listpic');
 //add hide class to all other descriptions
-
 	if (dis.hasClass('hide')) {
-
 		$('.listinfo').each(function() {
 			$(this).addClass('hide');
 		});
@@ -78,13 +74,11 @@ $('.listitem').click(function() {
 		$('.listitem').each(function() {
 			$(this).css('height', '65px');
 		});
-
 		dispic.removeClass('smlistpic');
 		dispic.addClass('biglistpic');
 		dis.removeClass('hide');
 		$(this).css('height', '160px');
 	}
-
 });
 
 

@@ -33,7 +33,7 @@ class WishlistsController < ApplicationController
 
 	def show
 		if (session[:user_id] == nil)
-			redirect_to "signup_path"
+			redirect_to signup_path
 		else
 			@user_id = session[:user_id]
 			@wishlist = Wishlist.find(params[:id])

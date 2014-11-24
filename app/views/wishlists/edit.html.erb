@@ -2,7 +2,7 @@
 
   <div data-role="header collapsible" class="heading">
     <div id="headtitle" class="ui-btn-left">
-   Editing your wishlist
+   edit
     </div>
     <img id="icon" class ="ui-btn-right" src="<%= @pic %>">
   </div>
@@ -28,7 +28,7 @@
   <%= f.text_field :date, id: "datepicker", :class => 'newfield', :placeholder => "event date"%>
 
   <button data-icon="carat-r" data-iconpos="right">
-    <%= f.submit 'Submit Edited Wishlist', :class => 'submitbutton' %>
+    <%= f.submit 'save & return to view all', :class => 'submitbutton' %>
     </button>
   <br>
 <% end %>
@@ -37,8 +37,8 @@
 <!-- slide menu panel -->
 <div class="menu" id="menu">
 <ul>
-  <li><a href="#">View claimed items</a></li>
-  <li><%= link_to "Log out", logout_path %></li>
+  <li><a href="#">claimed items</a></li>
+  <li><%= link_to "log out", logout_path %></li>
 </ul>
 </div>
 
@@ -47,7 +47,7 @@
       <ul>
         <li><a href="/wishlists" data-icon="bullets"> All Lists</a></li>
         <li><a href="/wishlists/new" data-icon="plus">New List</a></li>
-        <li><a href="#" onclick="Gimme.showMenu()" class="morebutton" data-icon="arrow-u">More</a></li>
+        <li><a href="#" onclick="Gimme.showMenu()" class="morebutton" data-icon="star">More</a></li>
       </ul>
     </div>
   </div>
