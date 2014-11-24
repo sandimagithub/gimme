@@ -49,7 +49,7 @@ Wishes.addItemSlot = function(){
 
 
 
-Wishes.addItem = function(item){
+Wishes.addItem = function(item, page){
 	console.log("item is ",item);
 	var claimName = "123";
 	//because userId is only passed in if the user isn't the owner, 
@@ -62,7 +62,7 @@ Wishes.addItem = function(item){
 			console.log("claimName is",claimName);
 			if(item.user_id === user.id){
 				//unclaimable
-				var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url, userId:userId, itemId: item.id, claimName:claimName, unclaim:true});
+				var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url, userId:userId, itemId: item.id, claimName:claimName, unclaim:true, page:page});
 			}else{
 				//someone else claimed it
 				var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url, userId:userId, itemId: item.id, claimName:claimName});
@@ -153,7 +153,7 @@ $('#listhead').click(function() {
 // };
 
 	Wishes.claim = function(itemId, userId){
-		clickedLi = $("#"+itemId);
+		var clickedLi = $("#"+itemId).first();
 		var classes = clickedLi.attr('class').split(" ");
 		if(classes.indexOf("claimed") === -1){
 			console.log("claiming list item ",clickedLi);
@@ -260,7 +260,7 @@ Wishes.loadUsersItems = function(userId){
 			success: function(items){
 				//if the ajax query succeds add each item to the page
 				console.log("load items success");
-				items.forEach(function(item){Wishes.addItem(item);});
+				items.forEach(function(item){Wishes.addItem(item,"my items");});
 				getListLength();
 				addColors();
 			}
@@ -272,8 +272,9 @@ Wishes.loadUsersItems = function(userId){
 
 
 Wishes.unclaim = function(itemId, page){
+	console.log(itemId,page);
 		var item = $("#"+itemId);
-	if(page === "my items"){
+	if(page){
 		item.remove();
 	}else{
 		item.removeClass("claimed");
