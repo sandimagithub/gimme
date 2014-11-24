@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
 	end
 
 	def index
+		@user_id = session
 		@items = Wishlist.find(params[:item][:wishlist_id]).items
     render json: @items
 	end

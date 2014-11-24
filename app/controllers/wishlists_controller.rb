@@ -1,6 +1,7 @@
 class WishlistsController < ApplicationController
 
 	def index
+		@user_id = session[:user_id]
     @wishlists = Wishlist.all
     @new_wishlist = Wishlist.new
 	end
