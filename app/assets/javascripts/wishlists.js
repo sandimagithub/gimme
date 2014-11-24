@@ -59,7 +59,6 @@ Wishes.addItemSlot = function(){
 };
 
 
-
 Wishes.addItem = function(item, page){
 	console.log("item is ",item);
 	var claimName = "123";
@@ -104,7 +103,6 @@ Wishes.getClaimName = function(user_id, callback){
 			}
 		});
 };
-
 
 
 Wishes.submitItem = function(itemId){
@@ -190,8 +188,6 @@ $('#listhead').click(function() {
 		}
 	};
 
-
-
 Wishes.delete = function(itemId){
 	var item = $("#"+itemId);
 	item.remove();
@@ -254,12 +250,6 @@ function shadeBlend(p,c0,c1) {
     }
 }
 
-
-
-
-
-
-
 Wishes.loadUsersItems = function(userId){
 	window.userId = userId;
 		$.ajax({
@@ -277,10 +267,6 @@ Wishes.loadUsersItems = function(userId){
 			}
 		});
 };
-
-
-
-
 
 Wishes.unclaim = function(itemId, page){
 	console.log(itemId,page);
@@ -306,18 +292,4 @@ Wishes.unclaim = function(itemId, page){
 		}
 	});	
 };
-
-
-// // Delete a book
-// Wishes.deleteBook = function(id) {
-// 	console.log(id);
-// 	$.ajax({
-// 	    url: "/books/"+id,
-// 	    type: 'DELETE',
-// 	    success: function(result) {
-// 	    	$("."+id).remove();
-// 	    }
-// 	});
-// };
-
 

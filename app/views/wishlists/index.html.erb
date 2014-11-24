@@ -8,20 +8,24 @@
 <% @wishlists.each do |wish| %>
 <div class='wishlistslist' data-role="content">
   <ul data-role="listview">
-    <li><a href="<%= wishlist_path(wish.id)%>" class="titlebutton"> <%= wish.title %> </a></li>
+    <li>
+    <a href="#" class="titlebutton"> <%= wish.title %> </a>
+    </li>
 
-<!--     <button class="listbutton"><a href="<%= wishlist_path(wish.id)%>">view</a></button> -->
-
-    <!-- need to render these buttons ONLY if wishlist=userid -->
-    <%if wish.user.id == @user_id%>
-      <button class="listbutton"><a href="<%= edit_wishlist_path(wish.id)%>">edit</a></button>
-      <button class="listbutton">
+<!-- hidden buttons -->
+<div class="listbuttons">
+  <button class="listbutton"><a href="<%= wishlist_path(wish.id)%>">view</a></button>
+  <%if wish.user.id == @user_id%>
+    <button class="listbutton"><a href="<%= edit_wishlist_path(wish.id)%>">edit</a></button>
+    <button class="listbutton">
       <%= form_for wish, method: "DELETE"  do |f| %>
       <%= submit_tag("delete", :id => 'deletebutton') %>
       <% end %>
-      </button>
-    <% end %>
+    </button>
+  <% end %>
     <!-- end -->
+</div>
+<!-- close hidden div -->
   </ul>
 </div>
 
@@ -46,3 +50,22 @@
     </ul>
   </div>
 </div>
+
+
+<script>
+
+//SHOW BUTTONS FUNCTION
+$(document).on("click", ".wishlistslist", function() {
+  var dis = $(this).find('.listbuttons');
+  if (dis.height() === 0) {
+    $('.listbuttons').each(function() {
+      $(this).animate({'height': '0px'}, 150);
+    });
+    dis.animate({'height': dis.get(0).scrollHeight}, 150);
+  }
+});
+
+</script>
+
+
+
