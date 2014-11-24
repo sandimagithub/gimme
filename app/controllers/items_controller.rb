@@ -22,9 +22,9 @@ class ItemsController < ApplicationController
 	end
 
 	def destroy
-		item = Item.find(params[:id])
-		item.destroy
-		redirect_to wishlist_path
+		binding.pry
+		Item.destroy(params[:id])
+		render json: "destroyed"
 	end
 
 	private

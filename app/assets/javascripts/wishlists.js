@@ -165,6 +165,24 @@ $('#listhead').click(function() {
 		}
 	};
 
+
+
+Wishes.delete = function(itemId){
+	var item = $("#"+itemId);
+	item.remove();
+	$.ajax({
+		method: "delete",
+		url: "/items/"+itemId,
+		error: function(){
+			console.log("delete item error");
+		},
+		success: function(data){
+			console.log(data);
+			console.log("delete item success");
+		}
+	});		
+};
+
 // function isUnclaimed(clickedLi) {
 // 	for (var cls in clickedLi.classList) {
 // 		if (cls === "claimed") {
