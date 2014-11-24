@@ -1,14 +1,26 @@
-<h1>All Wishlists</h1>
+<div data-role="header collapsible" class="heading">
+    <div id="headtitle" class="ui-btn-left">
+    all wishlists
+    </div>
+</div>
+
 
 <% @wishlists.each do |wish| %>
 
-<div class='wishlist' data-role="content">
+<div class='wishlistslist' data-role="content">
   <ul data-role="listview">
-    <li><a href="<%= wishlist_path(wish.id)%>"> <%= wish.title %> </a></li>
-    <a href="<%= edit_wishlist_path(wish.id)%>">Edit Wishlist</a>
-    <%= form_for wish, method: "DELETE"  do |f| %>
-    <%= submit_tag("delete", :class => 'deletebutton') %>
-    <% end %>
+    <li><a href="<%= wishlist_path(wish.id)%>" class="titlebutton"> <%= wish.title %> </a></li>
+
+<!--     <button class="listbutton"><a href="<%= wishlist_path(wish.id)%>">view</a></button> -->
+
+    <!-- need to render these buttons ONLY if wishlist=userid -->
+      <button class="listbutton"><a href="<%= edit_wishlist_path(wish.id)%>">edit</a></button>
+      <button class="listbutton">
+      <%= form_for wish, method: "DELETE"  do |f| %>
+      <%= submit_tag("delete", :id => 'deletebutton') %>
+      <% end %>
+      </button>
+    <!-- end -->
   </ul>
 </div>
 
