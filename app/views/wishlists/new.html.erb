@@ -24,37 +24,21 @@
 		<label for="other"> other</label><br>
 </fieldset> -->
 
-<div id="radiotitle">
-theme
+<div class="ui-field-contain">
+  <label for="select-choice-1" class="select">Choose a theme:</label>
+  <select name="wishlist[kind]" id="select-choice-1">
+    <option value="christmas" <%= if @wishlist.kind == "christmas" then "selected" end %>>Christmas</option>
+    <option value="birthday" <%= if @wishlist.kind == "birthday" then "selected" end %>>Birthday</option>
+    <option value="wedding" <%= if @wishlist.kind == "wedding" then "selected" end %>>Wedding</option>
+    <option value="other" <%= if @wishlist.kind == "other" then "selected" end %>>Other</option>
+  </select>
 </div>
-	<fieldset data-role="controlgroup">
-	<div class="ui-grid-c">
-
-	<div class="radiofield ui-block-a">
-	</div>
-
-	  	<div class="radiofield ui-block-b">
-	  	<%= f.radio_button(:kind, "christmas", id: "radio-choice-1")%>
-	  	<div class="radiolabel"> christmas </div>
-	  	</div>
-
-	  	<div class="radiofield ui-block-c">
-	  	<%= f.radio_button(:kind, "birthday", id: "radio-choice-2") %>
-	  	<div class="radiolabel"> birthday </div>
-	  	</div>
-
-	  	<div class="radiofield ui-block-d">
-	  	<%= f.radio_button(:kind, "other", id: "radio-choice-3") %>
-	  	<div class="radiolabel"> other </div>
-		</div>
-	</div>
-	</fieldset>
 
 	<!-- closes controlgroup fieldset -->
 
 	<%= f.text_field :date, id: "datepicker", :class => 'newfield', :placeholder => "event date"%>
 
-	<button>
+	<button data-icon="carat-r" data-iconpos="right">
 	  <%= f.submit 'create & add items ', :class => 'submitbutton' %>
 	  </button>
 	<br>
