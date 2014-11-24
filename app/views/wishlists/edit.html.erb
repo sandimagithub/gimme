@@ -1,0 +1,73 @@
+<div data-role="page">
+
+  <div data-role="header collapsible" class="heading">
+    <div id="headtitle" class="ui-btn-left">
+   Editing your wishlist
+    </div>
+    <img id="icon" class ="ui-btn-right" src="<%= @pic %>">
+  </div>
+  <!-- closes header div -->
+
+<%= form_for @wishlist, method: "PUT"  do |f| %>
+      <%= f.text_field :title, :class => 'newfield', :placeholder => "wishlist name" %>
+    
+
+    <%= f.text_area :description, :class => 'newfield', :placeholder => "add a description (optional)" %>
+
+<fieldset data-role="controlgroup">
+  <div class="ui-grid-c">
+
+    <div class="radiofield ui-block-a">
+    </div>
+
+    <fieldset data-role="controlgroup">
+      <legend>Choose a theme:</legend>
+      <input type="radio" name="radio-choice-2" id="radio-choice-1" value="choice-1" checked="checked">
+      <%= f.radio_button(:kind, "christmas", id: "radio-choice-1")%>
+      <label for="radio-choice-1">Christmas</label>
+
+      <input type="radio" name="radio-choice-2" id="radio-choice-2" value="choice-2">
+      <%= f.radio_button(:kind, "birthday", id: "radio-choice-2") %>
+      <label for="radio-choice-2">Birthday</label>
+
+      <input type="radio" name="radio-choice-2" id="radio-choice-3" value="choice-3">
+      <%= f.radio_button(:kind, "wedding", id: "radio-choice-3") %>
+      <label for="radio-choice-3">Wedding</label>
+
+      <input type="radio" name="radio-choice-2" id="radio-choice-4" value="choice-4">
+      <%= f.radio_button(:kind, "other", id: "radio-choice-4") %>
+      <label for="radio-choice-4">Other</label>
+    </fieldset>
+  </div>
+</fieldset>
+  <!-- closes controlgroup fieldset -->
+
+  <%= f.text_field :date, id: "datepicker", :class => 'newfield', :placeholder => "event date"%>
+
+  <button data-icon="carat-r" data-iconpos="right">
+    <%= f.submit 'Submit Edited Wishlist', :class => 'submitbutton' %>
+    </button>
+  <br>
+<% end %>
+<!-- closes form -->
+
+<!-- slide menu panel -->
+<div class="menu" id="menu">
+<ul>
+  <li><a href="#">View claimed items</a></li>
+  <li><%= link_to "Log out", logout_path %></li>
+</ul>
+</div>
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="/wishlists" data-icon="bullets"> All Lists</a></li>
+        <li><a href="/wishlists/new" data-icon="plus">New List</a></li>
+        <li><a href="#" onclick="Gimme.showMenu()" class="morebutton" data-icon="arrow-u">More</a></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+<!-- closes data-role div -->

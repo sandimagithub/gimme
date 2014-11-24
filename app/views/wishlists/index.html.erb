@@ -1,16 +1,17 @@
 <h1>All Wishlists</h1>
 
 <% @wishlists.each do |wish| %>
-	<div class='wishlist'>
-	<a href="/wishlists/<%= wish.id %>">
-  <p class="indexlink"><%= wish.title %></p>
-  </a>
 
-  <%= form_for wish, method: "DELETE"  do |f| %>
+<div class='wishlist' data-role="content">
+  <ul data-role="listview">
+    <li><a href="<%= wishlist_path(wish.id)%>"> <%= wish.title %> </a></li>
+    <a href="<%= edit_wishlist_path(wish.id)%>">Edit Wishlist</a>
+    <%= form_for wish, method: "DELETE"  do |f| %>
     <%= submit_tag("delete", :class => 'deletebutton') %>
-  <% end %>
-
+    <% end %>
+  </ul>
 </div>
+
 <br>
 <% end %>
 
