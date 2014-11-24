@@ -28,8 +28,10 @@ Wishes.loadItems= function(wishlistId, userId){
 				//if the ajax query succeds add each item to the page
 				console.log("load items success");
 				items.forEach(function(item){Wishes.addItem(item);});
-				getListLength();
-				addColors();
+
+//===   change the color gradient here   ====
+//=======  must be in hexcode form  =======
+				addColors("#324D5B", "#AFBEC0");
 			}
 		});
 
@@ -191,29 +193,30 @@ Wishes.delete = function(itemId){
 // 	}
 // }
 
-function getListLength() {
-		var itemlist = document.getElementsByClassName('listitem');
-		console.log("list length is ",itemlist.length);
-		return itemlist.length;
-	}
-
-function addColors() {
+function addColors(color, color2) {
 	var litems = document.getElementsByClassName('listitem');
-	//first color
-	var color = "#BDC8E2";
-	//second color
-	var color2 = "#FCDC55";
 	var color3 = color;
+	var gradient = setGradient(litems.length);
 	document.getElementById('fix').style.backgroundColor = color;
-	console.log(litems);
-	console.log(litems.length);
-
+	console.log("beginning gradient effect");
+	console.log(gradient);
 	for (var i=0; i<litems.length; i++) {
-		color3 = shadeBlend(0.06, color, color2);
+		color3 = shadeBlend(gradient, color, color2);
 		color = color3;
-		console.log("inloop");
 		console.log(color);
 		litems[i].style.backgroundColor = (color3);
+	}
+}
+
+function setGradient(length) {
+	if (length < 3) {
+		return 0.5;
+	} else if (length < 9) {
+		return 0.2;
+	} else if (length < 14) {
+		return 0.09;
+	} else {
+		return 0.07;
 	}
 }
 
