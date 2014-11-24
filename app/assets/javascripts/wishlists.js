@@ -134,7 +134,7 @@ Wishes.submitItem = function(itemId){
 			success: function(item){
 				console.log("submit success");
 				console.log(item);
-				Wishes.addItem({title:name,img_url:pic,description:description,url:url});
+				Wishes.addItem(item);
 				console.log("done adding");
 			}
 		});
