@@ -7,7 +7,7 @@
 
 <% @wishlists.each do |wish| %>
 <div class='wishlistslist' data-role="content">
-  <ul data-role="listview" data-icon="carat-d" data-iconpos="right">
+  <ul data-role="listview">
     <li><a href="<%= wishlist_path(wish.id)%>" class="titlebutton"> <%= wish.title %> </a></li>
 
 <!--     <button class="listbutton"><a href="<%= wishlist_path(wish.id)%>">view</a></button> -->
