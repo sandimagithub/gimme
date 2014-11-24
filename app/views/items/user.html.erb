@@ -1,0 +1,48 @@
+<div data-role="header collapsible" class="heading">
+		<div id="headtitle" class="ui-btn-left">
+		<%= @user.name %>
+		</div>
+		<img id="icon" class ="ui-btn-right" src="<%= @pic %>">
+</div>
+
+
+<div id="spacer"></div>
+<!-- list of existing items -->
+<ul data-role="listview" class="items">
+</ul>
+
+
+
+
+
+
+<script type="text/javascript">
+  Wishes.loadUsersItems(<%= @user.id %>);
+</script>
+
+
+<% if @belongstouser %>
+  <div id="spacer"></div>
+<% end %>
+
+
+
+
+<!-- slide menu panel -->
+<div class="menu" id="menu">
+<ul>
+  <li><%= link_to "View claimed items", claimed_items_path(@user.id) %></li>
+  <li><%= link_to "Log out", logout_path %></li>
+</ul>
+</div>
+
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="/wishlists" data-icon="bullets"> All Lists</a></li>
+        <li><a href="/wishlists/new" data-icon="plus">New List</a></li>
+        <li><a href="#" onclick="Gimme.showMenu()" class="morebutton" data-icon="star">More</a></li>
+      </ul>
+    </div>
+  </div>

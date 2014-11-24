@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  delete 'items/claim', to: 'items#unclaim'
+  
   resources :wishlists
   resources :items
 
@@ -10,7 +12,12 @@ Rails.application.routes.draw do
   get 'sessions/logout'
   get 'sessions/user', to: 'sessions#find_user'
 
+
+  get 'user/:id', to: 'items#user', as: 'claimed_items'
+  get 'user/:id/json', to: 'items#userjson'
+
   post 'items/claim', to: 'items#claim'
+
   root 'sessions#signup'
     get 'login', to: "sessions#login", as: 'login'
     get 'signup', to: "sessions#signup", as: 'signup'
