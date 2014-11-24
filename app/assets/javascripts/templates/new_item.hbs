@@ -44,6 +44,7 @@
 				<button class="detailsbutton hide" id="unclaim{{itemId}}" onclick="Wishes.unclaim({{itemId}})">Unclaim</button>
 			{{/if}}
 		{{else}}
+				<button class="detailsbutton" onclick="Wishes.editForm({{itemId}})">Edit</button>
 				<button class="detailsbutton" onclick="Wishes.delete({{itemId}})">Delete</button>
 		{{/if}}
 		{{#if unclaim}}
