@@ -222,8 +222,6 @@ function shadeBlend(p,c0,c1) {
 // 	});
 // };
 
-
-
 var count = function(){
 	var index = 0;
 	count = function(){

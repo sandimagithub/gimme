@@ -1,6 +1,12 @@
 == GIMME: a wishlist web app
 
 
+
+
+
+
+
+------------------
 This application allows people to easily create and share wishlists!
 
 After logging in with Facebook, users can create multiple wishlists and add unlimited items to these lists. They can specify whether the list is for their birthday, christmas, and otherwise. Users get a link they can share. 
