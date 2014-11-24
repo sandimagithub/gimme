@@ -3,11 +3,11 @@
 <% @wishlists.each do |wish| %>
 	<div class='wishlist'>
 	<a href="/wishlists/<%= wish.id %>">
-  <p><%= wish.title %></p>
+  <p class="indexlink"><%= wish.title %></p>
   </a>
 
   <%= form_for wish, method: "DELETE"  do |f| %>
-    <%= submit_tag("Delete Wishlist") %>
+    <%= submit_tag("delete", :class => 'deletebutton') %>
   <% end %>
 
 </div>
@@ -28,6 +28,6 @@
         <li><a href="/wishlists" data-icon="bullets"> All Lists</a></li>
         <li><a href="/wishlists/new" data-icon="plus">New List</a></li>
         <li><a href="#" onclick="Gimme.showMenu()" class="morebutton" data-icon="star">More</a></li>
-      </ul>
-    </div>
+    </ul>
   </div>
+</div>
