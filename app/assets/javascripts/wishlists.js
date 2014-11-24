@@ -81,6 +81,7 @@ Wishes.getClaimName = function(user_id, callback){
 };
 
 
+
 Wishes.submitItem = function(itemId){
 	$('.firstwishbutton').removeClass('hide');
 	$('#newcontainer').addClass('hide');
@@ -164,6 +165,24 @@ $('#listhead').click(function() {
 		}
 	};
 
+
+
+Wishes.delete = function(itemId){
+	var item = $("#"+itemId);
+	item.remove();
+	$.ajax({
+		method: "delete",
+		url: "/items/"+itemId,
+		error: function(){
+			console.log("delete item error");
+		},
+		success: function(data){
+			console.log(data);
+			console.log("delete item success");
+		}
+	});		
+};
+
 // function isUnclaimed(clickedLi) {
 // 	for (var cls in clickedLi.classList) {
 // 		if (cls === "claimed") {
@@ -221,20 +240,5 @@ function shadeBlend(p,c0,c1) {
 // 	    }
 // 	});
 // };
-
-var count = function(){
-	var index = 0;
-	count = function(){
-		index++;
-		console.log(index);
-	};
-	count();
-};
-
-
-
-
-
-
 
 

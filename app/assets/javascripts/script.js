@@ -6,7 +6,6 @@ $(document).ready(function () {
 	$(function() {
 		$( "#datepicker" ).datepicker();
 	});
-
 });
 // close document ready
 
