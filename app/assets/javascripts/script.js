@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 
 
-	// $('#loginbutton').click(function() {
+	// $('#loginbutton').click(function() { 
 	// var newWindow = window.open('', '_self', ''); //open the current window
  //    window.close(url);
 	// });
