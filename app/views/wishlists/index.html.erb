@@ -53,16 +53,19 @@
 
 
 <script>
-
+var open;
 //SHOW BUTTONS FUNCTION
 $(document).on("click", ".wishlistslist", function() {
   var dis = $(this).find('.listbuttons');
   if (dis.height() === 0) {
-    $('.listbuttons').each(function() {
-      $(this).animate({'height': '0px'}, 150);
-    });
-    dis.animate({'height': dis.get(0).scrollHeight}, 150);
+    if (open) {
+      open.animate({'height': '0px'}, 150);
+    }
+    dis.animate({'height': dis.get(0).scrollHeight}, 150);   
+  } else {
+    dis.animate({'height': '0px'}, 150);
   }
+  open = dis;
 });
 
 </script>
