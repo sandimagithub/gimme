@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
 	
 	def create
 		@item = Item.new(get_item_params)
-		binding.pry
 		if @item.save
 			@item.wishlist = Wishlist.find(params[:item][:wishlist_id])
     	render json: @item
