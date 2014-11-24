@@ -81,6 +81,11 @@ $('.listitem').click(function() {
 		dispic.addClass('biglistpic');
 		dis.removeClass('hide');
 		$(this).css('height', '160px');
+	} else {
+		dispic.addClass('smlistpic');
+		dispic.removeClass('biglistpic');
+		dis.addClass('hide');
+		$(this).css('height', '65px');
 	}
 
 });
