@@ -35,13 +35,8 @@
 <% end %>
 <!-- closes form -->
 
-<!-- slide menu panel -->
-<div class="menu" id="menu">
-<ul>
-  <li><a href="#">claimed items</a></li>
-  <li><%= link_to "log out", logout_path %></li>
-</ul>
-</div>
+<!-- slider menu -->
+<%= render "partials/slidemenu" %>
 
 <div data-role="footer" data-position="fixed" data-tap-toggle="false">
     <div data-role="navbar">
