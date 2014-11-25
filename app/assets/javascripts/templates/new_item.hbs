@@ -1,6 +1,6 @@
 
 
-<!-- Entire list item. Has the click listener. Id = the id of the item. -->
+<!-- Entire list  Has the click listener. Id = the id of the  -->
 <!-- if the item has been claimed give it the class claimed -->
 {{#if claimName}}
 <li class="listitem claimed" id="{{itemId}}">
@@ -45,7 +45,7 @@
 				<button class="detailsbutton hide" id="unclaim{{itemId}}" onclick="Wishes.unclaim({{itemId}})">Unclaim</button>
 			{{/if}}
 		{{else}}
-				<button class="detailsbutton" id = "editbutton" onclick="Wishes.editForm({{itemId}})">edit</button>
+				<button class="detailsbutton editbutton{{itemId}}" id = "editbutton">edit</button>
 				<button class="detailsbutton" onclick="Wishes.delete({{itemId}})">delete</button>
 		{{/if}}
 		{{#if unclaim}}

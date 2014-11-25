@@ -10,6 +10,7 @@ class WishlistsController < ApplicationController
 		if (session[:user_id] == nil)
 			redirect_to signup_path
 		else
+			@user_id = session[:user_id]
 			@wishlist = Wishlist.new
 			@pic = session[:pic]
 		end
