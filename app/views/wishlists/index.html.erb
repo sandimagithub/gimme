@@ -1,77 +1,80 @@
 <div data-role="header collapsible" class="heading">
     <div id="headtitle" class="ui-btn-left">
-    All Wishlists
+    All wishlists
     </div>
 </div>
 
-
+<!-- LIST ALL WISHLISTS -->
 <% @wishlists.each do |wish| %>
-<div class='wishlistslist' data-role="content">
-  <ul data-role="listview" data-icon="carat-d" data-iconpos="right">
-    <li>
-    <a href="#" class="titlebutton"> <%= wish.title %> </a>
-    </li>
 
-<!-- hidden buttons -->
-<div class="listbuttons">
-  <div data-tap-toggle="false">
-    <div data-role="navbar">
-      <ul>
-        <li><a href="<%= wishlist_path(wish.id)%>" data-icon="eye">View</a></li>
-        <li><a href="<%= edit_wishlist_path(wish.id)%>" data-icon="edit">Edit</a></li>
+<!-- IF [wish] BELONGS TO USER -->
+<!-- make title and hidden buttons -->
+  <% if (wish.user_id === @user_id) %>
+    <div class='wishlistslist' data-role="content">
+      <ul data-role="listview" data-icon="carat-d" data-iconpos="right">
         <li>
-          <%= form_for wish, method: "DELETE"  do |f| %>
-            <%= button_tag("Delete", data: { "icon" => "delete" }) %>
-          <% end %>
+          <a href="#" class="titlebutton"> <%= wish.title %> </a>
+        </li>
+    <!-- hidden buttons -->
+        <div class="listbuttons hide">
+          <div data-tap-toggle="false">
+            <div data-role="navbar">
+              <ul>
+                <li><a href="<%= wishlist_path(wish.id)%>" data-icon="eye">View</a></li>
+                <li><a href="<%= edit_wishlist_path(wish.id)%>" data-icon="edit">Edit</a></li>
+                <li>
+                  <%= form_for wish, method: "DELETE"  do |f| %>
+                    <%= button_tag("Delete", data: { "icon" => "delete" }) %>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          </div>    <!-- end -->
+        </div>
+    <!-- close hidden buttons -->
+      </ul>
+    </div>
+
+  <!-- IF [wish] IS NOT BY THE USER -->
+  <!-- make only the header and link directly to the list -->
+  <% else %>
+    <div class='wishlistslist' data-role="content">
+      <ul data-role="listview" data-icon="arrow-r" data-iconpos="right">
+        <li>
+          <a href="<%= wishlist_path(wish.id)%>" class="titlebutton"> <%= wish.title %> <span class="by"> by <%= wish.user.name %></span></a>
         </li>
       </ul>
     </div>
-  </div>    <!-- end -->
-</div>
-<!-- close hidden div -->
-</ul>
-</div>
-
-<br>
-
+  <% end %>
+  <br>
 <% end %>
+<!-- end listing loop -->
 
+<!-- slider menu -->
+<%= render "partials/slidemenu" %>
 
-<!-- slide menu panel -->
-<div class="menu" id="menu">
-<ul>
-  <li><a href="#">claimed items</a></li>
-  <li><%= link_to "log out", logout_path %></li>
-</ul>
-</div>
-
-<div data-role="footer" data-position="fixed" data-tap-toggle="false">
-    <div data-role="navbar">
-      <ul>
-        <li><a href="/wishlists" data-icon="bullets"> All Lists</a></li>
-        <li><a href="/wishlists/new" data-icon="plus">New List</a></li>
-        <li><a href="#" onclick="Gimme.showMenu()" class="morebutton" data-icon="star">More</a></li>
-    </ul>
-  </div>
-</div>
-
+<!-- footer -->
+<%= render "partials/footer" %>
 
 <script>
 var open;
 //SHOW BUTTONS FUNCTION
-$(document).on("click", ".wishlistslist", function() {
-  var dis = $(this).find('.listbuttons');
-  if (dis.height() === 0) {
-    if (open) {
-      open.animate({'height': '0px'}, 150);
+  $(document).on("click", ".wishlistslist", function() {
+    var dis = $(this).find('.listbuttons');
+    dis.removeClass('hide');
+    var icon = $(this).find('');
+    if (dis.height() === 0) {
+      if (open) {
+        open.animate({'height': '0px'}, 150);
+      }
+      dis.animate({'height': dis.get(0).scrollHeight}, 150);   
+    } else {
+      dis.animate({'height': '0px'}, 150, function() {
+        dis.addClass('hide');
+      });
     }
-    dis.animate({'height': dis.get(0).scrollHeight}, 150);   
-  } else {
-    dis.animate({'height': '0px'}, 150);
-  }
-  open = dis;
-});
-
+    open = dis;
+  });
 </script>
 
 

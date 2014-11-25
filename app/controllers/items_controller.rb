@@ -15,8 +15,8 @@ class ItemsController < ApplicationController
 
 	def update
 		@item = Item.find(params[:id])
-		@item.update(item_params)
-		redirect_to item_path
+		@item.update(get_item_params)
+		render json: @item
 	end
 
 	def claim
@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
 	end
 
 	def index
-		@user_id = session
 		@items = Wishlist.find(params[:item][:wishlist_id]).items
     render json: @items
 	end

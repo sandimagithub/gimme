@@ -20,3 +20,4 @@
 //= require_tree .
 
 $.mobile.page.prototype.options.domCache = false;
+

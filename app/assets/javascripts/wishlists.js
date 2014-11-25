@@ -14,7 +14,7 @@ $(document).ready(function() {
 var Wishes = {};
 
 
-Wishes.loadItems= function(wishlistId, userId){
+Wishes.loadItems= function(wishlistId, wishlistKind, userId){
 	window.wishlistId = wishlistId;
 	//userId is only passed in if the user isn't the owner
 	window.userId = userId;
@@ -36,13 +36,32 @@ Wishes.loadItems= function(wishlistId, userId){
 				console.log("load_items error");
 			},
 			success: function(items){
+				dis = items;
 				//if the ajax query succeds add each item to the page
-				console.log("load items success");
+				console.log("load items success",items);
 				items.forEach(function(item){Wishes.addItem(item);});
 
 //===   change the color gradient here   ====
 //=======  must be in hexcode form  =======
-				addColors("#324D5B", "#AFBEC0");
+				var col1;
+				var col2;
+				var col3;
+				if (wishlistKind === "christmas") {
+					col1 = "#205936";
+					col2 = "#84E376";
+					//col3 = "#B27B71";
+				} else if (wishlistKind === "birthday") {
+					col1 = "#28AAE0";
+					col2 = "#FCDC55";
+				} else if (wishlistKind === "wedding") {
+					col1 = "#E5E5E5";
+					col2 = "#A1B2B4";
+				} else {
+					col1 = "#324D5B";
+					col2 = "#AFBEC0";
+					//col3 = "#FEFEFE";
+				}
+				addColors(col1, col2);
 			}
 		});
 
@@ -83,10 +102,37 @@ Wishes.addItem = function(item, page){
 		});
 	}else{
 		var list = $(".items");
+		console.log(item);
+		var edit = Wishes.edit(item);
+		console.log(edit);
 		var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url, userId:userId, itemId: item.id});
 		list.append(itemHTML);
+		$(".editbutton"+item.id).attr("onclick", edit);
 	}
 };
+
+Wishes.edit = function(item){
+	string = 'Wishes.editForm({itemId:'+item.id+",";
+	if(item.title){
+		console.log(item.title);
+		string += "name:"+"'"+item.title+"'";
+	} 
+	if(item.img_url){
+		string+=", pic:"+"'"+item.img_url+"'";
+	}
+	if(item.description){
+		string+=", description:"+"'"+item.description+"'";
+	}
+	if(item.url){
+		string+=", url:"+"'"+item.url+"'";
+	}
+	string += "})";
+	return string;
+};
+
+
+
+
 
 
 Wishes.getClaimName = function(user_id, callback){
@@ -206,18 +252,13 @@ Wishes.delete = function(itemId){
 	});		
 };
 
-// function isUnclaimed(clickedLi) {
-// 	for (var cls in clickedLi.classList) {
-// 		if (cls === "claimed") {
-// 			return false;
-// 		}
-// 	}
-// }
-
 function addColors(color, color2) {
 	var litems = document.getElementsByClassName('listitem');
 	var color3 = color;
 	var gradient = setGradient(litems.length);
+	$('.ui-page-theme-a').css('background-color', color);
+	//$('.listinfo').css('color', color4);
+	//$('#listsubtitle').css('color', color4);
 	document.getElementById('fix').style.backgroundColor = color;
 	console.log("beginning gradient effect");
 	console.log(gradient);
@@ -235,6 +276,8 @@ function setGradient(length) {
 	} else if (length < 9) {
 		return 0.2;
 	} else if (length < 14) {
+		return 0.15;
+	} else if (length < 15) {
 		return 0.09;
 	} else {
 		return 0.07;
@@ -264,20 +307,53 @@ Wishes.loadUsersItems = function(userId){
 			success: function(items){
 				//if the ajax query succeds add each item to the page
 				console.log("load items success");
+				console.log("items",items);
 				items.forEach(function(item){Wishes.addItem(item,"my items");});
-				getListLength();
-				addColors();
 			}
 		});
 };
 
 
-Wishes.editForm = function(itemId){
-	var item = $("#"+itemId);
-	var form = formHTML = HandlebarsTemplates["new_form"];
+Wishes.editForm = function(data){
+	console.log(data);
+	var item = $("#"+data.itemId);
+	var form = formHTML = HandlebarsTemplates["edit_form"](data);
 	item.html(form);
+	$("#name").focus();
 };
 
+
+Wishes.editItem = function(itemId){
+	var name = $("#name").val();
+	var url = $("#url").val();
+	var pic = $("#pic").val();
+	var description = $("#description").val();
+	console.log(name,url,pic,description,itemId);
+	
+	$.ajax({
+		url: "/items/"+itemId,
+		method: "put",
+			data: {"item":
+				{ 
+					item_id: itemId,  
+					title: name,
+					description: description,
+					url: url, 
+					img_url: pic
+				}
+			},
+		error: function(){
+			console.log("edit item error");
+		},
+		success: function(item){
+			//if the ajax query succeds add each item to the page
+			console.log("edit item success");
+			console.log(item);
+			var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url, userId:userId, itemId: item.id});
+			$("#"+item.id).html(itemHTML);
+		}
+	});
+};
 
 
 Wishes.unclaim = function(itemId, page){

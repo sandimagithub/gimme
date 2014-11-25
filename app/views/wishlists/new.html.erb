@@ -2,14 +2,14 @@
 
 	<div data-role="header collapsible" class="heading">
 		<div id="headtitle" class="ui-btn-left">
-		new wishlist
+		New wishlist
 		</div>
 		<img id="icon" class ="ui-btn-right" src="<%= @pic %>">
 	</div>
 	<!-- closes header div -->
 
 <%= form_for @wishlist do |f| %>
-	  	<%= f.text_field :title, :class => 'newfield', :placeholder => "wishlist name" %>
+	  	<%= f.text_field :title, :class => 'newfield', :placeholder => "wishlist name", :maxlength => "25" %>
 	  
 
 		<%= f.text_area :description, :class => 'newfield', :placeholder => "add a description (optional)" %>
@@ -47,24 +47,13 @@
 
 <!-- closes form -->
 
+<!-- slider menu -->
+<%= render "partials/slidemenu" %>
 
-<!-- slide menu panel -->
-<div class="menu" id="menu">
-<ul>
-	<li><a href="#">claimed items</a></li>
-	<li><%= link_to "log out", logout_path %></li>
-</ul>
-</div>
+<!-- footer -->
+<%= render "partials/footer" %>
 
-<div data-role="footer" data-position="fixed" data-tap-toggle="false">
-    <div data-role="navbar">
-      <ul>
-        <li><a href="/wishlists" data-icon="bullets"> All Lists</a></li>
-        <li><a href="/wishlists/new" data-icon="plus">New List</a></li>
-        <li><a href="#" onclick="Gimme.showMenu()" class="morebutton" data-icon="star">More</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+
+
 
 <!-- closes data-role div -->

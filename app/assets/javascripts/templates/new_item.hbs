@@ -1,6 +1,6 @@
 
 
-<!-- Entire list item. Has the click listener. Id = the id of the item. -->
+<!-- Entire list  Has the click listener. Id = the id of the  -->
 <!-- if the item has been claimed give it the class claimed -->
 {{#if claimName}}
 <li class="listitem claimed" id="{{itemId}}">
@@ -27,29 +27,31 @@
 		{{#if description}}
 			{{description}}<br>
 		{{else}}
-			nothing to see here!<br>
+			no details available<br>
 		{{/if}}
 
 		{{#if url}}
-			<a href="{{url}}" target="_blank">view online</a>
+			<a href="{{url}}" id="itemurl" target="_blank">view online</a>
 		{{/if}}
 
 
 <!-- if the item has been claimed display the name of the user who claimed it -->
 		{{#if userId}}
 			{{#if claimName}}
+			<br>
 				claimed by {{claimName}}
 			{{else}}
 				<button class="detailsbutton" id="claim{{itemId}}" onclick="Wishes.claim({{itemId}}, {{userId}})">Claim</button>
 				<button class="detailsbutton hide" id="unclaim{{itemId}}" onclick="Wishes.unclaim({{itemId}})">Unclaim</button>
 			{{/if}}
 		{{else}}
-				<button class="detailsbutton" onclick="Wishes.delete({{itemId}})">Delete</button>
+				<button class="detailsbutton editbutton{{itemId}}" id = "editbutton">edit</button>
+				<button class="detailsbutton" onclick="Wishes.delete({{itemId}})">delete</button>
 		{{/if}}
 		{{#if unclaim}}
-			<button class="detailsbutton" id="unclaim{{itemId}}" onclick="Wishes.unclaim({{itemId}})">Unclaim</button>
-			<button class="detailsbutton hide" id="claim{{itemId}}" onclick="Wishes.claim({{itemId}}, {{userId}})">Claim</button>
-		{{/if}}
+			<button class="detailsbutton" id="unclaim{{itemId}}" onclick="Wishes.unclaim({{itemId}})">unclaim</button>
+			<button class="detailsbutton hide" id="claim{{itemId}}" onclick="Wishes.claim({{itemId}}, {{userId}})">claim</button>
+		{{/if}} 
 
 		</div>
 		<!-- closes additional info div -->
