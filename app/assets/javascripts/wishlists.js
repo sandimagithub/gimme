@@ -36,8 +36,9 @@ Wishes.loadItems= function(wishlistId, userId){
 				console.log("load_items error");
 			},
 			success: function(items){
+				dis = items;
 				//if the ajax query succeds add each item to the page
-				console.log("load items success");
+				console.log("load items success",items);
 				items.forEach(function(item){Wishes.addItem(item);});
 
 //===   change the color gradient here   ====
@@ -83,10 +84,37 @@ Wishes.addItem = function(item, page){
 		});
 	}else{
 		var list = $(".items");
+		console.log(item);
+		var edit = Wishes.edit(item);
+		console.log(edit);
 		var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url, userId:userId, itemId: item.id});
 		list.append(itemHTML);
+		$(".editbutton"+item.id).attr("onclick", edit);
 	}
 };
+
+Wishes.edit = function(item){
+	string = 'Wishes.editForm({itemId:'+item.id+",";
+	if(item.title){
+		console.log(item.title);
+		string += "name:"+"'"+item.title+"'";
+	} 
+	if(item.img_url){
+		string+=", pic:"+"'"+item.img_url+"'";
+	}
+	if(item.description){
+		string+=", description:"+"'"+item.description+"'";
+	}
+	if(item.url){
+		string+=", url:"+"'"+item.url+"'";
+	}
+	string += "})";
+	return string;
+};
+
+
+
+
 
 
 Wishes.getClaimName = function(user_id, callback){
@@ -264,6 +292,7 @@ Wishes.loadUsersItems = function(userId){
 			success: function(items){
 				//if the ajax query succeds add each item to the page
 				console.log("load items success");
+				console.log("items",items);
 				items.forEach(function(item){Wishes.addItem(item,"my items");});
 				getListLength();
 				addColors();
@@ -272,12 +301,46 @@ Wishes.loadUsersItems = function(userId){
 };
 
 
-Wishes.editForm = function(itemId){
-	var item = $("#"+itemId);
-	var form = formHTML = HandlebarsTemplates["new_form"]({edit:true});
+Wishes.editForm = function(data){
+	console.log(data);
+	var item = $("#"+data.itemId);
+	var form = formHTML = HandlebarsTemplates["edit_form"](data);
 	item.html(form);
+	$("#name").focus();
 };
 
+
+Wishes.editItem = function(itemId){
+	var name = $("#name").val();
+	var url = $("#url").val();
+	var pic = $("#pic").val();
+	var description = $("#description").val();
+	console.log(name,url,pic,description,itemId);
+	
+	$.ajax({
+		url: "/items/"+itemId,
+		method: "put",
+			data: {"item":
+				{ 
+					item_id: itemId,  
+					title: name,
+					description: description,
+					url: url, 
+					img_url: pic
+				}
+			},
+		error: function(){
+			console.log("edit item error");
+		},
+		success: function(item){
+			//if the ajax query succeds add each item to the page
+			console.log("edit item success");
+			console.log(item);
+			var itemHTML = HandlebarsTemplates["new_item"]({name:item.title, pic:item.img_url, description:item.description, url:item.url, userId:userId, itemId: item.id});
+			$("#"+item.id).html(itemHTML);
+		}
+	});
+};
 
 
 Wishes.unclaim = function(itemId, page){
