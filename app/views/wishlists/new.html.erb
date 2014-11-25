@@ -37,7 +37,7 @@
 
 	<!-- closes controlgroup fieldset -->
 
-	<%= f.text_field :date, id: "datepicker", :class => 'newfield', :placeholder => "event date"%>
+	<%= f.text_field :date, :placeholder => "event date", data: { "role" => "date" } %>
 
 	<button data-icon="carat-r" data-iconpos="right">
 	  <%= f.submit 'create & add items ', :class => 'submitbutton' %>
