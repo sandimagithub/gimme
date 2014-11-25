@@ -8,7 +8,11 @@ yellow:  #FCDC55
 blue: #28AAE0
 periwinkle: #BDC8E2*/
 
-.ui-overlay-a, .ui-page-theme-a, .ui-panel-wrapper {
+
+.ui-datepicker {
+	width:100% !important;
+
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
 	background-color: #324D5B;
 	color: white;
 	text-shadow: none;
