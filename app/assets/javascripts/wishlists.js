@@ -45,15 +45,15 @@ Wishes.loadItems= function(wishlistId, wishlistKind, userId){
 				var col1;
 				var col2;
 				var col3;
-				if (wishlistKind === "christmas") {
-					col1 = "#0B4A0F";
-					col2 = "#49A06C";
-					col3 = "#ff7878";
-				} else {
+				// if (wishlistKind === "christmas") {
+				// 	col1 = "#0B4A0F";
+				// 	col2 = "#49A06C";
+				// 	col3 = "#ff7878";
+				// } else {
 					col1 = "#324D5B";
 					col2 = "#AFBEC0";
 					col3 = "#FEFEFE";
-				}
+				// }
 				addColors(col1, col2, col3);
 			}
 		});

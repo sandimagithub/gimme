@@ -67,6 +67,11 @@ wishlist type: <%= @wishlist.kind %><br>
   </div>
 </div>
 
+<% if (@kind === "christmas") %>
+  christmas!!!!!!!
+  <%= render "partials/christmas" %>
+<% end %>
+
 <script>
 
 //ACCORDION FUNCTION
