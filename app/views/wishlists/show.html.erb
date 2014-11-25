@@ -9,7 +9,7 @@
 <div id="listsubtitle">
 wishlist type: <%= @wishlist.kind %><br>
 <% if @belongstouser %>
-	this is your list!
+	by you!
 <% else %>
 	by: <%= @wishlistowner.name %>
 <% end %>
@@ -67,9 +67,13 @@ wishlist type: <%= @wishlist.kind %><br>
   </div>
 </div>
 
-<% if (@kind === "christmas") %>
-  christmas!!!!!!!
+<!-- rendering appropriate CSS -->
+<% if (@wishlist.kind === "christmas") %>
   <%= render "partials/christmas" %>
+<% elsif (@wishlist.kind === "birthday") %>
+  <%= render "partials/birthday" %>
+<% elsif (@wishlist.kind === "wedding") %>
+  <%= render "partials/wedding" %>
 <% end %>
 
 <script>

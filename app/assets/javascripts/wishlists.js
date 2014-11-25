@@ -45,16 +45,22 @@ Wishes.loadItems= function(wishlistId, wishlistKind, userId){
 				var col1;
 				var col2;
 				var col3;
-				// if (wishlistKind === "christmas") {
-				// 	col1 = "#0B4A0F";
-				// 	col2 = "#49A06C";
-				// 	col3 = "#ff7878";
-				// } else {
+				if (wishlistKind === "christmas") {
+					col1 = "#001300";
+					col2 = "#205936";
+					//col3 = "#B27B71";
+				} else if (wishlistKind === "birthday") {
+					col1 = "#28AAE0";
+					col2 = "#FCDC55";
+				} else if (wishlistKind === "wedding") {
+					col1 = "#FEFEFE";
+					col2 = "#A1B2B4";
+				} else {
 					col1 = "#324D5B";
 					col2 = "#AFBEC0";
-					col3 = "#FEFEFE";
-				// }
-				addColors(col1, col2, col3);
+					//col3 = "#FEFEFE";
+				}
+				addColors(col1, col2);
 			}
 		});
 
@@ -226,13 +232,13 @@ Wishes.delete = function(itemId){
 // 	}
 // }
 
-function addColors(color, color2, color4) {
+function addColors(color, color2) {
 	var litems = document.getElementsByClassName('listitem');
 	var color3 = color;
 	var gradient = setGradient(litems.length);
 	$('.ui-page-theme-a').css('background-color', color);
-	$('.listinfo').css('color', color4);
-	$('#listsubtitle').css('color', color4);
+	//$('.listinfo').css('color', color4);
+	//$('#listsubtitle').css('color', color4);
 	document.getElementById('fix').style.backgroundColor = color;
 	console.log("beginning gradient effect");
 	console.log(gradient);
@@ -250,6 +256,8 @@ function setGradient(length) {
 	} else if (length < 9) {
 		return 0.2;
 	} else if (length < 14) {
+		return 0.15;
+	} else if (length < 15) {
 		return 0.09;
 	} else {
 		return 0.07;
