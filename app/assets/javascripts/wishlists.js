@@ -53,7 +53,7 @@ Wishes.loadItems= function(wishlistId, wishlistKind, userId){
 					col1 = "#28AAE0";
 					col2 = "#FCDC55";
 				} else if (wishlistKind === "wedding") {
-					col1 = "#FEFEFE";
+					col1 = "#E5E5E5";
 					col2 = "#A1B2B4";
 				} else {
 					col1 = "#324D5B";
