@@ -9,6 +9,9 @@ blue: #28AAE0
 periwinkle: #BDC8E2*/
 
 
+.ui-datepicker {
+	width:100% !important;
+}
 
 
 .c-black{
@@ -121,6 +124,7 @@ body {
 	font-size: 22px;
 	clear: both;
 	float: left;
+	margin-left: 5px;
 	width: 60%;
 }
 /*list icon*/
@@ -128,12 +132,13 @@ body {
 	float: right;
 	border: none;
 	overflow: hidden;
-	padding-top: 1px;
+	margin-top: 3px;
+	margin-right: 3px;
+	border-radius: 7px;
 }
 .biglistpic {
 	height: 110px;
 	width: 110px;
-	margin-top: 3px;
 }
 .smlistpic {
 	height: 60px;
@@ -141,8 +146,9 @@ body {
 }
 /*list info*/
 .listinfo {
-	font-size: 14px;
+	font-size: 16px;
 	clear: left;
+	margin-left: 5px;
 }
 .detailsbutton {
 	position: absolute;
@@ -151,12 +157,20 @@ body {
 	border: none;
 	bottom: 3px !important;
 	right: 3px !important;
+	border-radius: 6px;
+	margin-right: 3px;
 }
 #editbutton {
 	right: 60px !important;
 }
 /*class of ul*/
 .items {
+}
+
+#itemurl {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 300 !important;
+	color: #324D5B;
 }
 
 /*new item form*/
@@ -183,10 +197,12 @@ body {
 /*wishlist header css*/
 #listsubtitle {
 	margin-top: -18px;
-	font-size: 15px;
+	font-size: 16px;
+	margin-left: 10px;
+	color: #AFBEC0;
 }
 #listdescrip {
-	font-size: 12px;
+	font-size: 15px;
 	padding-top: 8px;
 }
 

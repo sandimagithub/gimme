@@ -2,7 +2,7 @@
 
 	<div data-role="header collapsible" class="heading">
 		<div id="headtitle" class="ui-btn-left">
-		new wishlist
+		New wishlist
 		</div>
 		<img id="icon" class ="ui-btn-right" src="<%= @pic %>">
 	</div>
@@ -37,7 +37,7 @@
 
 	<!-- closes controlgroup fieldset -->
 
-	<%= f.text_field :date, id: "datepicker", :class => 'newfield', :placeholder => "event date"%>
+	<%= f.text_field :date, :placeholder => "event date", data: { "role" => "date" } %>
 
 	<button data-icon="carat-r" data-iconpos="right">
 	  <%= f.submit 'create & add items ', :class => 'submitbutton' %>
@@ -47,14 +47,8 @@
 
 <!-- closes form -->
 
-
-<!-- slide menu panel -->
-<div class="menu" id="menu">
-<ul>
-	<li><a href="#">claimed items</a></li>
-	<li><%= link_to "log out", logout_path %></li>
-</ul>
-</div>
+<!-- slider menu -->
+<%= render "partials/slidemenu" %>
 
 <div data-role="footer" data-position="fixed" data-tap-toggle="false">
     <div data-role="navbar">
@@ -66,5 +60,8 @@
     </div>
   </div>
 </div>
+
+
+
 
 <!-- closes data-role div -->

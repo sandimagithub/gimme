@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+# ruby "2.0.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
@@ -37,6 +37,9 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'handlebars_assets'
+
+gem 'rails_12factor', group: :production
 
 gem 'twitter-bootstrap-rails', '~> 3.2.0'
 
@@ -56,8 +59,12 @@ group :test, :development do
   gem 'launchy'
   # will let us run tests automatically
   gem 'guard-rspec'
-  # notifications
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
+  # # notifications
+  # gem 'rb-fsevent' if `uname` =~ /Darwin/
+end
+
+group :test, :darwin do
+  gem 'rb-fsevent'
 end
 
 group :test do
@@ -73,4 +80,3 @@ group :development do
   # omg. this is better than butter on sliced bread.
   gem 'pry-byebug'
 end
-gem 'handlebars_assets'

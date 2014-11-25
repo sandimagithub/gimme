@@ -38,6 +38,7 @@ class WishlistsController < ApplicationController
 			@user_id = session[:user_id]
 			@wishlist = Wishlist.find(params[:id])
 			@this_items = @wishlist.items
+			@kind = @wishlist.kind
 			@belongstouser = false
 			if session[:user_id] == @wishlist.user_id
 				@belongstouser = true
