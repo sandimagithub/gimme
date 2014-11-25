@@ -9,7 +9,7 @@
 	<!-- closes header div -->
 
 <%= form_for @wishlist do |f| %>
-	  	<%= f.text_field :title, :class => 'newfield', :placeholder => "wishlist name" %>
+	  	<%= f.text_field :title, :class => 'newfield', :placeholder => "wishlist name", :maxlength => "25" %>
 	  
 
 		<%= f.text_area :description, :class => 'newfield', :placeholder => "add a description (optional)" %>
