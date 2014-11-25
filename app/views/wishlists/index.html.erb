@@ -1,6 +1,6 @@
 <div data-role="header collapsible" class="heading">
     <div id="headtitle" class="ui-btn-left">
-    all wishlists
+    All Wishlists
     </div>
 </div>
 
@@ -14,24 +14,28 @@
 
 <!-- hidden buttons -->
 <div class="listbuttons">
-  <button class="listbutton"><a href="<%= wishlist_path(wish.id)%>">view</a></button>
-  <%if wish.user.id == @user_id%>
-    <button class="listbutton"><a href="<%= edit_wishlist_path(wish.id)%>">edit</a></button>
-    <button class="listbutton">
-      <%= form_for wish, method: "DELETE"  do |f| %>
-      <%= submit_tag("delete", :id => 'deletebutton') %>
-      <% end %>
-    </button>
-  <% end %>
-    <!-- end -->
+  <div data-tap-toggle="false">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="<%= wishlist_path(wish.id)%>" data-icon="eye">View</a></li>
+        <li><a href="<%= edit_wishlist_path(wish.id)%>" data-icon="edit">Edit</a></li>
+        <li>
+          <%= form_for wish, method: "DELETE"  do |f| %>
+            <%= button_tag("Delete", data: { "icon" => "delete" }) %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>    <!-- end -->
 </div>
 <!-- close hidden div -->
-  </ul>
+</ul>
 </div>
 
 <br>
 
 <% end %>
+
 
 <!-- slide menu panel -->
 <div class="menu" id="menu">
