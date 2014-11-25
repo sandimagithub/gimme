@@ -46,8 +46,8 @@ Wishes.loadItems= function(wishlistId, wishlistKind, userId){
 				var col2;
 				var col3;
 				if (wishlistKind === "christmas") {
-					col1 = "#001300";
-					col2 = "#205936";
+					col1 = "#205936";
+					col2 = "#84E376";
 					//col3 = "#B27B71";
 				} else if (wishlistKind === "birthday") {
 					col1 = "#28AAE0";
@@ -224,14 +224,6 @@ Wishes.delete = function(itemId){
 	});		
 };
 
-// function isUnclaimed(clickedLi) {
-// 	for (var cls in clickedLi.classList) {
-// 		if (cls === "claimed") {
-// 			return false;
-// 		}
-// 	}
-// }
-
 function addColors(color, color2) {
 	var litems = document.getElementsByClassName('listitem');
 	var color3 = color;
@@ -288,8 +280,6 @@ Wishes.loadUsersItems = function(userId){
 				//if the ajax query succeds add each item to the page
 				console.log("load items success");
 				items.forEach(function(item){Wishes.addItem(item,"my items");});
-				getListLength();
-				addColors();
 			}
 		});
 };

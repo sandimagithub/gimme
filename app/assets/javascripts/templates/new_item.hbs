@@ -38,6 +38,7 @@
 <!-- if the item has been claimed display the name of the user who claimed it -->
 		{{#if userId}}
 			{{#if claimName}}
+			<br>
 				claimed by {{claimName}}
 			{{else}}
 				<button class="detailsbutton" id="claim{{itemId}}" onclick="Wishes.claim({{itemId}}, {{userId}})">Claim</button>

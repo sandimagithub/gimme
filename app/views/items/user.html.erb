@@ -1,6 +1,6 @@
 <div data-role="header collapsible" class="heading">
 		<div id="headtitle" class="ui-btn-left">
-		<%= @user.name %>
+		Wishes you've claimed
 		</div>
 		<img id="icon" class ="ui-btn-right" src="<%= @pic %>">
 </div>
@@ -11,22 +11,9 @@
 <ul data-role="listview" class="items">
 </ul>
 
-
-
-
-
-
 <script type="text/javascript">
   Wishes.loadUsersItems(<%= @user.id %>);
 </script>
-
-
-<% if @belongstouser %>
-  <div id="spacer"></div>
-<% end %>
-
-
-
 
 <!-- slide menu panel -->
 <div class="menu" id="menu">

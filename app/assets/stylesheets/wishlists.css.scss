@@ -7,10 +7,27 @@ purple: #81479B
 yellow:  #FCDC55
 blue: #28AAE0
 periwinkle: #BDC8E2*/
-
-
+.ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {
+}
+.ui-btn-active:after {
+	color: white !important;
+}
+.ui-btn:hover {
+	border: none !important;
+}
 .ui-datepicker {
-	width:100% !important;
+	width: 100% !important;
+}
+a:hover {
+	color: white !important;
+	text-decoration: none !important;
+}
+.ui-btn:focus {
+	box-shadow: none !important;
+}
+
+a:active {
+	outline: none !important;
 }
 
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
@@ -102,7 +119,15 @@ body {
 /* ================== */
 /* show wishlist page */
 /* ================== */
-
+#iconpic {
+	width: 70px;
+	height: 70px;
+	position: absolute;
+	right: 9px;
+	top: 6px;
+	background-image: url("http://i.imgur.com/BoPdaka.png");
+	background-size: cover;
+}
 /*each li*/
 .listitem {
 	position: relative;
@@ -160,6 +185,10 @@ body {
 }
 /*class of ul*/
 .items {
+}
+
+.claimed {
+	border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
 #itemurl {
@@ -291,8 +320,13 @@ body {
 	padding: 0 !important;
 }
 .titlebutton {
-/*	color: white !important;*/
+	font-size: 20px;
 }
 .indexlink {
 	margin-bottom: 0px;
+}
+
+.by {
+	font-size: 10px;
+	opacity: .7;
 }

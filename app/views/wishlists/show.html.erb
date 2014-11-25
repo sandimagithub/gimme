@@ -3,14 +3,15 @@
 		<div id="headtitle" class="ui-btn-left">
 		<%= @wishlist.title %>
 		</div>
-		<img id="icon" class ="ui-btn-right" src="<%= @pic %>">
 </div>
+
+<div id="iconpic"></div>
 
 <div id="listsubtitle">
 <% if @belongstouser %>
 	by you!
 <% else %>
-	by: <%= @wishlistowner.name %>
+	<%= @wishlist.kind %> wishlist by <%= @wishlistowner.name %>
 <% end %>
 <p id="listdescrip"><%= @wishlist.description %></p>
 </div>
@@ -77,6 +78,24 @@
 
 <script>
 
+
+$(document).on("click", ".wishlistslist", function() {
+    var dis = $(this).find('.listbuttons');
+    dis.removeClass('hide');
+    var icon = $(this).find('');
+    if (dis.height() === 0) {
+      if (open) {
+        open.animate({'height': '0px'}, 150);
+      }
+      dis.animate({'height': dis.get(0).scrollHeight}, 150);   
+    } else {
+      dis.animate({'height': '0px'}, 150, function() {
+        dis.addClass('hide');
+      });
+    }
+    open = dis;
+  });
+
 //ACCORDION FUNCTION
 $(document).on("click", ".listitem", function() {
 
@@ -99,7 +118,10 @@ $(document).on("click", ".listitem", function() {
     dispic.removeClass('smlistpic');
     dispic.addClass('biglistpic');
     dis.removeClass('hide');
-    $(this).css('height', '160px');
+    $(this).css('height', 'auto');
+    if ($(this).height() < 115) {
+      $(this).css('height', '115px');
+    }
   } else {
     dispic.addClass('smlistpic');
     dispic.removeClass('biglistpic');
