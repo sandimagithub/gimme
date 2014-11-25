@@ -14,7 +14,7 @@ $(document).ready(function() {
 var Wishes = {};
 
 
-Wishes.loadItems= function(wishlistId, userId){
+Wishes.loadItems= function(wishlistId, wishlistKind, userId){
 	window.wishlistId = wishlistId;
 	//userId is only passed in if the user isn't the owner
 	window.userId = userId;
@@ -42,7 +42,19 @@ Wishes.loadItems= function(wishlistId, userId){
 
 //===   change the color gradient here   ====
 //=======  must be in hexcode form  =======
-				addColors("#324D5B", "#AFBEC0");
+				var col1;
+				var col2;
+				var col3;
+				if (wishlistKind === "christmas") {
+					col1 = "#0B4A0F";
+					col2 = "#49A06C";
+					col3 = "#ff7878";
+				} else {
+					col1 = "#324D5B";
+					col2 = "#AFBEC0";
+					col3 = "#FEFEFE";
+				}
+				addColors(col1, col2, col3);
 			}
 		});
 
@@ -214,10 +226,13 @@ Wishes.delete = function(itemId){
 // 	}
 // }
 
-function addColors(color, color2) {
+function addColors(color, color2, color4) {
 	var litems = document.getElementsByClassName('listitem');
 	var color3 = color;
 	var gradient = setGradient(litems.length);
+	$('.ui-page-theme-a').css('background-color', color);
+	$('.listinfo').css('color', color4);
+	$('#listsubtitle').css('color', color4);
 	document.getElementById('fix').style.backgroundColor = color;
 	console.log("beginning gradient effect");
 	console.log(gradient);
