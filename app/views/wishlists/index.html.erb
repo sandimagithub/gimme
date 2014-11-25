@@ -9,7 +9,7 @@
 <div class='wishlistslist' data-role="content">
   <ul data-role="listview" data-icon="carat-d" data-iconpos="right">
     <li>
-    <a href="#" class="titlebutton"> <%= wish.title %> </a>
+    <a href="#" class="titlebutton"> <%= wish.title %> <%= wish.user.name %></a>
     </li>
 
 <!-- hidden buttons -->
@@ -18,12 +18,14 @@
     <div data-role="navbar">
       <ul>
         <li><a href="<%= wishlist_path(wish.id)%>" data-icon="eye">View</a></li>
+        <% if wish.user.id == @user_id %>
         <li><a href="<%= edit_wishlist_path(wish.id)%>" data-icon="edit">Edit</a></li>
         <li>
           <%= form_for wish, method: "DELETE"  do |f| %>
             <%= button_tag("Delete", data: { "icon" => "delete" }) %>
           <% end %>
         </li>
+        <% end %>
       </ul>
     </div>
   </div>    <!-- end -->
