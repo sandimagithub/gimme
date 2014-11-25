@@ -59,8 +59,12 @@ group :test, :development do
   gem 'launchy'
   # will let us run tests automatically
   gem 'guard-rspec'
-  # notifications
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
+  # # notifications
+  # gem 'rb-fsevent' if `uname` =~ /Darwin/
+end
+
+group :test, :darwin do
+  gem 'rb-fsevent'
 end
 
 group :test do
